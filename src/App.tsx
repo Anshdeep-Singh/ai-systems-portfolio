@@ -187,13 +187,13 @@ export default function App() {
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div>
                   <div className="flex items-center gap-3">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white">IntelSpider</h3>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white">IntelSpider 2.0</h3>
                     <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                       LIVE DEMO
                     </span>
                   </div>
                   <p className="text-base sm:text-lg text-zinc-300 mt-2">
-                    Multi-agent research tool for competitive intelligence and automated company dossiers
+                    Deterministic pre-meeting account intelligence & cryptographic evidence audit ledger
                   </p>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
@@ -207,7 +207,7 @@ export default function App() {
                     <ArrowUpRight className="w-4 h-4" />
                   </a>
                   <a
-                    href="https://github.com/Anshdeep-Singh/PoW_1"
+                    href="https://github.com/Anshdeep-Singh/intelspider"
                     target="_blank"
                     rel="noreferrer"
                     className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
@@ -220,7 +220,7 @@ export default function App() {
 
               {/* Badges */}
               <div className="flex flex-wrap gap-2 mb-6">
-                {['Python / FastAPI', 'Multi-Agent Pipeline', 'Pydantic Schemas', 'Docker', 'Web Scraping'].map((tag) => (
+                {['Next.js 16 (App Router)', 'TypeScript', 'DNS-over-HTTPS (DoH)', 'HTTP Fingerprinting', 'Public ATS Harvester', 'Audit Ledger'].map((tag) => (
                   <span key={tag} className="px-3 py-1 rounded-lg bg-zinc-800 text-zinc-300 text-xs font-mono border border-zinc-700/60">
                     {tag}
                   </span>
@@ -235,7 +235,7 @@ export default function App() {
                     The Problem
                   </h4>
                   <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Sales and strategy teams spend hours checking competitor websites, pricing pages, and public filings by hand. Raw LLMs trying to do this often make up numbers and return messy text.
+                    Before enterprise discovery calls, reps waste 45-60 minutes manually researching mail routing, script tags, and job boards. Generic AI tools hallucinate corporate horoscopes with ungrounded scores.
                   </p>
                 </div>
                 <div className="space-y-2">
@@ -244,7 +244,7 @@ export default function App() {
                     How It Works
                   </h4>
                   <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Split into focused workers: one runs reconnaissance, another scrapes web pages, another extracts SEC filings, and an aggregator organizes the findings. Pydantic schemas validate each output so data stays consistent.
+                    Harvests ground truth via parallel DNS-over-HTTPS (SPF/DMARC/MX), HTTP script signatures (Segment, Datadog, Next.js), and public ATS job APIs. Mints every fact into an immutable SHA-256 audit ledger and verifies that all persona hooks cite real artifacts.
                   </p>
                 </div>
                 <div className="space-y-2">
@@ -253,7 +253,7 @@ export default function App() {
                     The Result
                   </h4>
                   <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Turns messy company web data into verified company dossiers, SWOT breakdowns, and sales battlecards in seconds, with caching to keep API costs minimal.
+                    Generates verifiable pre-meeting sales battlecards in 10-15 seconds. Every discovery question and hook links to raw cryptographic proof, cutting pre-meeting research time by 80%.
                   </p>
                 </div>
               </div>
