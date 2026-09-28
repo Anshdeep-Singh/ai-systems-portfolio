@@ -1,27 +1,30 @@
-# Anshdeep Singh — AI Systems & Automation Engineer
+# Anshdeep Singh — Portfolio
 
-Modern, high-performance portfolio and technical reference architecture for **Anshdeep Singh** (AI Systems & Automation Engineer based in Greater Vancouver, BC).
+Personal website and portfolio for **Anshdeep Singh**, an AI Systems & Automation Engineer based in Greater Vancouver, BC.
 
 Built with **React 19**, **TypeScript**, **Vite**, and **Tailwind CSS v4**.
 
-## 🚀 Overview
+## Featured Projects
 
-- **Executive Framing:** Positioned specifically for high-impact AI Automation Engineer, Solutions Architect, and Forward-Deployed Engineering roles.
-- **Deep Architectural Teardowns:** Explains the engineering bottlenecks, system designs, and quantified outcomes of key proof-of-work systems:
-  - **IntelSpider** (`intelspider.anshdeepsingh.com`): Multi-agent B2B competitive intelligence & battlecard synthesizer with deterministic Pydantic validation.
-  - **CorpGraph 3D** (`corpgraph.anshdeepsingh.com`): Federated SPARQL telemetry visualizer rendering corporate ownership networks in Three.js/WebGL with vector PDF reporting.
-  - **Enterprise DC Automation (Walmart)**: Real-world operational logistics tooling cutting KPI audit verification by 38% (4.0 hrs → 2.5 hrs).
-- **Core Engineering Pedigree:** Classical machine learning research (GANs at SCAAI), aerospace-grade IC failure analysis at Semi-Conductor Laboratory (Govt Dept of Space / ISRO), and formal data analytics coursework.
+- **IntelSpider** (`intelspider.anshdeepsingh.com`): Multi-agent research tool for competitive intelligence and automated company dossiers, backed by Pydantic schema validation.
+- **CorpGraph 3D** (`corpgraph.anshdeepsingh.com`): Browser-based 3D visualizer for corporate ownership networks and parent-subsidiary links, querying live Wikidata SPARQL APIs.
+- **Enterprise Supply Chain Automation (Walmart DC)**: Warehouse operations tools cutting daily KPI and audit verification time by 38% (from 4 hours to 2.5 hours).
 
-## 🛠 Tech Stack
+## Background
 
-- **Framework:** React 19 + TypeScript
-- **Bundler:** Vite
-- **Styling:** Tailwind CSS v4 (Dark Minimalist Architecture)
-- **Icons:** Lucide Icons & Custom SVGs
-- **Deployment:** Vercel / Cloudflare Pages / Static Hosting
+- **AI Researcher** at Symbiosis Centre for AI (SCAAI) — CGANs, sequential generative models, and PyTorch data pipelines.
+- **Reliability Engineer** at Semi-Conductor Laboratory (Govt Dept of Space / ISRO) — Environmental and electrical stress testing for aerospace ICs.
+- **Machine Learning Engineer** at Tekolutions — Multimodal vision (CNNs) and audio feature extraction (Librosa).
+- **Education:** Post-Baccalaureate Diploma in Data Analytics (Douglas College) & B.Tech in Electronics and Telecommunication (SIT).
 
-## 💻 Local Development
+## Tech Stack
+
+- React 19 + TypeScript
+- Vite
+- Tailwind CSS v4
+- Lucide Icons
+
+## Development
 
 ```bash
 npm install

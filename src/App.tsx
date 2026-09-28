@@ -12,9 +12,8 @@ import {
   Check,
   Building2,
   Boxes,
-  ShieldCheck,
+  Briefcase,
   Zap,
-  Phone,
   MapPin
 } from 'lucide-react';
 
@@ -69,30 +68,32 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
-            <button
-              onClick={copyEmail}
-              className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-300 hover:text-white hover:border-zinc-700 transition"
-              title="Copy email to clipboard"
+          <div className="flex items-center gap-2">
+            <a
+              href="mailto:anshdeepsaini@gmail.com"
+              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
+              aria-label="Send Email"
+              title="Email: anshdeepsaini@gmail.com"
             >
-              {copiedEmail ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
-              {copiedEmail ? 'Copied!' : 'anshdeepsaini@gmail.com'}
-            </button>
+              <Mail className="w-4 h-4" />
+            </a>
             <a
               href="https://github.com/Anshdeep-Singh"
               target="_blank"
               rel="noreferrer"
               className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
               aria-label="GitHub Profile"
+              title="GitHub"
             >
               <GithubIcon className="w-4 h-4" />
             </a>
             <a
-              href="https://linkedin.com/in/sanshdeep"
+              href="https://linkedin.com/in/anshdeeps"
               target="_blank"
               rel="noreferrer"
               className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
               aria-label="LinkedIn Profile"
+              title="LinkedIn"
             >
               <LinkedinIcon className="w-4 h-4" />
             </a>
@@ -107,33 +108,31 @@ export default function App() {
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-[1.15]">
-            Engineering deterministic AI pipelines & high-impact workflow automation.
+            Building reliable AI workflows, practical automations, and internal tools.
           </h1>
 
           <p className="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl mb-8">
-            I specialize in building reliable multi-agent systems, internal automation tools, and data infrastructure. 
-            Rooted in classical ML research (GANs at SCAAI), mission-critical hardware reliability testing (Semi-Conductor Laboratory / ISRO-affiliated), 
-            and enterprise supply chain optimization (Walmart DC), I tame non-deterministic LLMs with rigorous software guardrails.
+            I'm an AI systems and automation engineer based in Vancouver. My background spans hands-on machine learning research, hardware reliability testing for aerospace ICs, and warehouse operations at Walmart. I build systems that make AI dependable in daily work—clean data validation, robust agent pipelines, and practical automations that save teams real hours.
           </p>
 
           {/* Quick Metrics Bar */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
             <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-              <div className="text-2xl font-bold font-mono text-emerald-400 mb-1">-38% Verification Time</div>
+              <div className="text-2xl font-bold font-mono text-emerald-400 mb-1">-38% Audit Time</div>
               <p className="text-xs text-zinc-400 leading-snug">
-                Collapsed daily enterprise logistics KPI verification from 4 hrs to 2.5 hrs via custom automated pipelines.
+                Cut daily logistics KPI verification from 4 hours to 2.5 hours at Walmart's distribution centre.
               </p>
             </div>
             <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-              <div className="text-2xl font-bold font-mono text-cyan-400 mb-1">0% Schema Drift</div>
+              <div className="text-2xl font-bold font-mono text-cyan-400 mb-1">Valid JSON Always</div>
               <p className="text-xs text-zinc-400 leading-snug">
-                Enforcing strict Pydantic/Zod deterministic contracts over non-deterministic multi-agent LLM outputs.
+                Strict Pydantic and Zod schema validation so AI agent responses never break downstream apps.
               </p>
             </div>
             <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-              <div className="text-2xl font-bold font-mono text-purple-400 mb-1">Zero-Token Watchdogs</div>
+              <div className="text-2xl font-bold font-mono text-purple-400 mb-1">Silent Watchdogs</div>
               <p className="text-xs text-zinc-400 leading-snug">
-                Engineered script-driven telemetry watchdogs running on schedule with 100% silence on unchanged state.
+                Scheduled background monitoring scripts that stay quiet unless an issue actually needs attention.
               </p>
             </div>
           </div>
@@ -141,18 +140,18 @@ export default function App() {
           {/* Action Links */}
           <div className="flex flex-wrap items-center gap-3">
             <a
-              href="#systems"
+              href="#projects"
               className="px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-semibold text-sm transition inline-flex items-center gap-2 shadow-lg shadow-emerald-500/20"
             >
               <Cpu className="w-4 h-4" />
-              View Featured Systems
+              View Projects
             </a>
             <a
               href="mailto:anshdeepsaini@gmail.com"
               className="px-4 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 text-sm font-medium transition inline-flex items-center gap-2"
             >
               <Mail className="w-4 h-4" />
-              Contact Directly
+              Get in Touch
             </a>
             <a
               href="https://github.com/Anshdeep-Singh"
@@ -166,16 +165,16 @@ export default function App() {
           </div>
         </section>
 
-        {/* Flagship Systems (Proof of Work) */}
-        <section id="systems" className="mb-20 scroll-mt-12">
+        {/* Flagship Projects */}
+        <section id="projects" className="mb-20 scroll-mt-12">
           <div className="flex items-center justify-between mb-8 pb-3 border-b border-zinc-800">
             <div>
               <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
                 <Boxes className="w-6 h-6 text-emerald-400" />
-                Featured Systems & Architecture
+                Featured Projects
               </h2>
               <p className="text-xs text-zinc-400 font-mono mt-1">
-                Engineered for reliability, latency optimization, and measurable operational impact
+                Working systems built for real-world reliability and measurable time savings
               </p>
             </div>
           </div>
@@ -189,11 +188,11 @@ export default function App() {
                   <div className="flex items-center gap-3">
                     <h3 className="text-xl sm:text-2xl font-bold text-white">IntelSpider</h3>
                     <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      LIVE PRODUCTION
+                      LIVE DEMO
                     </span>
                   </div>
                   <p className="text-zinc-400 text-sm mt-1">
-                    Multi-Agent B2B Competitive Intelligence & Strategic Battlecard Engine
+                    Multi-agent research tool for competitive intelligence and automated company dossiers
                   </p>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
@@ -220,40 +219,40 @@ export default function App() {
 
               {/* Badges */}
               <div className="flex flex-wrap gap-1.5 mb-6">
-                {['Python / FastAPI', 'Multi-Agent Orchestration', 'Pydantic Schemas', 'Docker', 'Web Reconnaissance'].map((tag) => (
+                {['Python / FastAPI', 'Multi-Agent Pipeline', 'Pydantic Schemas', 'Docker', 'Web Scraping'].map((tag) => (
                   <span key={tag} className="px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 text-[11px] font-mono border border-zinc-700/60">
                     {tag}
                   </span>
                 ))}
               </div>
 
-              {/* Architecture Deep Dive */}
+              {/* Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-zinc-800/80">
                 <div className="space-y-1.5">
                   <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Activity className="w-3.5 h-3.5 text-cyan-400" />
-                    The Bottleneck
+                    The Problem
                   </h4>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    B2B sales and strategy teams waste hours manually piecing together competitor website changes, pricing updates, and SEC filings. LLMs asked to synthesize this naively hallucinate metrics and lack structured formatting.
+                    Sales and strategy teams spend hours checking competitor websites, pricing pages, and public filings by hand. Raw LLMs trying to do this often make up numbers and return messy text.
                   </p>
                 </div>
                 <div className="space-y-1.5">
                   <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Network className="w-3.5 h-3.5 text-emerald-400" />
-                    System Architecture
+                    How It Works
                   </h4>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Decomposed pipeline into specialized agent nodes (Domain Recon, Scraper, SEC Parser, Synthesis Engine) coupled with deterministic Pydantic schema validation to ensure zero malformed JSON reaches downstream views.
+                    Split into focused workers: one runs reconnaissance, another scrapes web pages, another extracts SEC filings, and an aggregator organizes the findings. Pydantic schemas validate each output so data stays consistent.
                   </p>
                 </div>
                 <div className="space-y-1.5">
                   <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Zap className="w-3.5 h-3.5 text-purple-400" />
-                    The Output
+                    The Result
                   </h4>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Generates verified board-level dossiers, SWOT analyses, and actionable sales objection-handling battlecards in seconds, backed by caching to reduce token spend.
+                    Turns messy company web data into verified company dossiers, SWOT breakdowns, and sales battlecards in seconds, with caching to keep API costs minimal.
                   </p>
                 </div>
               </div>
@@ -266,11 +265,11 @@ export default function App() {
                   <div className="flex items-center gap-3">
                     <h3 className="text-xl sm:text-2xl font-bold text-white">CorpGraph 3D</h3>
                     <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                      LIVE PRODUCTION
+                      LIVE DEMO
                     </span>
                   </div>
                   <p className="text-zinc-400 text-sm mt-1">
-                    Client-Side 3D Corporate Ownership Network & Telemetry Visualizer
+                    Interactive 3D visualization of corporate ownership networks and parent-subsidiary relationships
                   </p>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
@@ -297,40 +296,40 @@ export default function App() {
 
               {/* Badges */}
               <div className="flex flex-wrap gap-1.5 mb-6">
-                {['Next.js 16', 'Three.js / WebGL', '3d-force-graph', 'Wikidata SPARQL API', 'jsPDF Vector Export', 'TypeScript'].map((tag) => (
+                {['Next.js', 'Three.js / WebGL', '3d-force-graph', 'Wikidata SPARQL API', 'jsPDF Vector Export', 'TypeScript'].map((tag) => (
                   <span key={tag} className="px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 text-[11px] font-mono border border-zinc-700/60">
                     {tag}
                   </span>
                 ))}
               </div>
 
-              {/* Architecture Deep Dive */}
+              {/* Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-zinc-800/80">
                 <div className="space-y-1.5">
                   <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Activity className="w-3.5 h-3.5 text-cyan-400" />
-                    The Bottleneck
+                    The Problem
                   </h4>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Analyzing multi-tier corporate hierarchies, subsidiaries, and cross-holdings usually requires heavy enterprise graph databases (Neo4j) or sluggish backend microservices that add hosting bloat.
+                    Tracing corporate ownership across multiple tiers of subsidiaries and investment stakes usually requires expensive enterprise graph databases or slow server pipelines.
                   </p>
                 </div>
                 <div className="space-y-1.5">
                   <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Network className="w-3.5 h-3.5 text-emerald-400" />
-                    System Architecture
+                    How It Works
                   </h4>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Direct client-side federated querying against live Wikidata SPARQL endpoints, dynamically constructing cyclic entity graphs rendered in real-time WebGL space with zero backend compute overhead.
+                    Directly queries live Wikidata SPARQL endpoints from the browser, builds the graph structure in memory, and renders the 3D network with Three.js—no backend servers or database hosting needed.
                   </p>
                 </div>
                 <div className="space-y-1.5">
                   <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Zap className="w-3.5 h-3.5 text-purple-400" />
-                    The Output
+                    The Result
                   </h4>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Interactive 3D graph exploration with automated nodal centrality calculation and one-click formatted vector PDF generation for equity research and compliance teams.
+                    Smooth 3D navigation across corporate connections with node search, relationship details, and clean one-click PDF export for research and due diligence reports.
                   </p>
                 </div>
               </div>
@@ -343,11 +342,11 @@ export default function App() {
                   <div className="flex items-center gap-3">
                     <h3 className="text-xl sm:text-2xl font-bold text-white">Enterprise Supply Chain & QA Automation</h3>
                     <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      OPERATIONAL IMPACT
+                      INTERNAL TOOLING
                     </span>
                   </div>
                   <p className="text-zinc-400 text-sm mt-1">
-                    Walmart Distribution Centre (Surrey, BC) · High-Throughput Logistics Automation
+                    Walmart Distribution Centre (Surrey, BC) · Warehouse operations automation
                   </p>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
@@ -360,40 +359,40 @@ export default function App() {
 
               {/* Badges */}
               <div className="flex flex-wrap gap-1.5 mb-6">
-                {['Excel VBA Automation', 'WMS Data Pipeline', 'ETL Verification', 'Audit Stream Compression', 'Incident Escalation'].map((tag) => (
+                {['Excel VBA Automation', 'WMS Data Pipeline', 'Data Reconciliation', 'Process Automation', 'Reporting'].map((tag) => (
                   <span key={tag} className="px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 text-[11px] font-mono border border-zinc-700/60">
                     {tag}
                   </span>
                 ))}
               </div>
 
-              {/* Architecture Deep Dive */}
+              {/* Breakdown */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-zinc-800/80">
                 <div className="space-y-1.5">
                   <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Activity className="w-3.5 h-3.5 text-cyan-400" />
-                    Operational Friction
+                    The Problem
                   </h4>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Manual verification of daily cross-departmental KPI summaries and outbound shipment audit files in high-volume warehouse environments consumed 4+ hours every shift with substantial human error risk.
+                    Verifying daily cross-departmental KPI summaries and auditing outbound shipment files took over 4 hours every shift, done manually across messy spreadsheets with high risk of human error.
                   </p>
                 </div>
                 <div className="space-y-1.5">
                   <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Network className="w-3.5 h-3.5 text-emerald-400" />
-                    Automation Solution
+                    How It Works
                   </h4>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Engineered modular macro automation pipelines that ingested raw WMS transactional records, standardized data structures, and cross-reconciled discrepancies automatically.
+                    Built modular VBA automation tools that ingest raw Warehouse Management System transaction records, reconcile discrepancies against shipment logs, and highlight issues automatically.
                   </p>
                 </div>
                 <div className="space-y-1.5">
                   <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
                     <Zap className="w-3.5 h-3.5 text-purple-400" />
-                    Measurable Result
+                    The Result
                   </h4>
                   <p className="text-xs text-zinc-400 leading-relaxed">
-                    Cut daily KPI verification time by 38% (4.0 hrs → 2.5 hrs), reduced outbound audit reconciliation from 20 min to 5 min, and compressed daily reporting prep from 15 min to 5 min.
+                    Cut daily KPI verification by 38% (from 4 hours to 2.5 hours), reduced outbound audit reconciliation from 20 minutes to 5 minutes, and saved hours of manual work every week.
                   </p>
                 </div>
               </div>
@@ -402,16 +401,16 @@ export default function App() {
           </div>
         </section>
 
-        {/* Foundational Pedigree / Why Not a Vibe Coder */}
+        {/* Background & Experience */}
         <section className="mb-20">
           <div className="flex items-center justify-between mb-8 pb-3 border-b border-zinc-800">
             <div>
               <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-                <ShieldCheck className="w-6 h-6 text-emerald-400" />
-                Technical Foundations & Reliability Moat
+                <Briefcase className="w-6 h-6 text-emerald-400" />
+                Background & Experience
               </h2>
               <p className="text-xs text-zinc-400 font-mono mt-1">
-                Classical machine learning and hardware reliability experience before the LLM era
+                Practical roots in machine learning research, aerospace hardware testing, and data analytics
               </p>
             </div>
           </div>
@@ -422,16 +421,16 @@ export default function App() {
             <div className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800/80 space-y-3">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-semibold text-white text-base">AI Research Scientist</h3>
+                  <h3 className="font-semibold text-white text-base">AI Researcher</h3>
                   <p className="text-xs text-zinc-400 font-mono">Symbiosis Centre for AI (SCAAI)</p>
                 </div>
                 <span className="text-[11px] font-mono text-zinc-500">2020 – 2021</span>
               </div>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Led research on generative pipelines using Conditional Generative Adversarial Networks (CGANs). Engineered automated dataset curation pipelines and multi-modal sequential generation models, understanding latent space dynamics long before modern LLM prompt engineering.
+                Researched generative models using Conditional Generative Adversarial Networks (CGANs). Built automated dataset preparation pipelines and multi-modal models for sequential image generation in PyTorch.
               </p>
               <div className="flex flex-wrap gap-1 pt-1">
-                {['CGANs', 'PyTorch', 'Data Pipelines', 'GPU Optimization'].map((t) => (
+                {['CGANs', 'PyTorch', 'Data Pipelines', 'Computer Vision'].map((t) => (
                   <span key={t} className="px-2 py-0.5 rounded bg-zinc-800/80 text-[10px] font-mono text-zinc-400">
                     {t}
                   </span>
@@ -449,10 +448,10 @@ export default function App() {
                 <span className="text-[11px] font-mono text-zinc-500">2020 – 2021</span>
               </div>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Subjected integrated chips to extreme environmental and electrical stress testing for aerospace telemetry. Developed Python analytical tools to calculate theoretical voltage spike thresholds and interpret failure-point root causes.
+                Tested integrated circuits under extreme electrical and environmental conditions for aerospace applications. Wrote Python tools to analyze telemetry data, determine voltage thresholds, and diagnose failure causes.
               </p>
               <div className="flex flex-wrap gap-1 pt-1">
-                {['Telemetry Analysis', 'Python', 'Stress Testing', 'Root-Cause Analysis'].map((t) => (
+                {['Python', 'Hardware Stress Testing', 'Telemetry Data', 'Failure Analysis'].map((t) => (
                   <span key={t} className="px-2 py-0.5 rounded bg-zinc-800/80 text-[10px] font-mono text-zinc-400">
                     {t}
                   </span>
@@ -470,7 +469,7 @@ export default function App() {
                 <span className="text-[11px] font-mono text-zinc-500">2021</span>
               </div>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Engineered multi-modal interview evaluation pipelines combining CNN computer vision for facial expression analysis with Librosa audio feature extraction and sentiment classification models.
+                Built multimodal evaluation pipelines combining CNN computer vision for facial expression tracking with Librosa audio feature extraction for speech and sentiment evaluation.
               </p>
               <div className="flex flex-wrap gap-1 pt-1">
                 {['CNNs', 'Audio Extraction', 'TensorFlow', 'Emotion Analysis'].map((t) => (
@@ -486,7 +485,7 @@ export default function App() {
               <div className="flex items-start justify-between">
                 <div>
                   <h3 className="font-semibold text-white text-base">Education & Credentials</h3>
-                  <p className="text-xs text-zinc-400 font-mono">Formal Analytics & Engineering Rigor</p>
+                  <p className="text-xs text-zinc-400 font-mono">Degrees & Certifications</p>
                 </div>
                 <span className="text-[11px] font-mono text-zinc-500">Vancouver & India</span>
               </div>
@@ -501,7 +500,7 @@ export default function App() {
                   <strong className="text-zinc-100">Diploma in Business Management:</strong> SIBM Pune
                 </li>
                 <li>
-                  <strong className="text-zinc-100">Junior Data Analyst Professional Certificate:</strong> Npower Canada
+                  <strong className="text-zinc-100">Junior Data Analyst Professional Certificate:</strong> NPower Canada
                 </li>
               </ul>
             </div>
@@ -509,16 +508,16 @@ export default function App() {
           </div>
         </section>
 
-        {/* Technical Capabilities Matrix */}
+        {/* Skills & Technologies */}
         <section className="mb-20">
           <div className="flex items-center justify-between mb-8 pb-3 border-b border-zinc-800">
             <div>
               <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
                 <Terminal className="w-6 h-6 text-emerald-400" />
-                Technical Capabilities Matrix
+                Skills & Technologies
               </h2>
               <p className="text-xs text-zinc-400 font-mono mt-1">
-                Full-stack autonomy: from high-level orchestration to bare-metal data flows
+                Tools and frameworks I use to build reliable software and automated workflows
               </p>
             </div>
           </div>
@@ -531,12 +530,12 @@ export default function App() {
                 Agentic & AI
               </div>
               <ul className="text-xs text-zinc-300 space-y-1.5 font-mono">
-                <li>• Multi-Agent Systems</li>
-                <li>• Pydantic Strict Schemas</li>
-                <li>• Prompt Engineering</li>
-                <li>• Evaluation Loops</li>
-                <li>• Token & Cost Budgeting</li>
-                <li>• Zero-Token Watchdogs</li>
+                <li>• Multi-agent workflows</li>
+                <li>• Pydantic & Zod schemas</li>
+                <li>• Prompt design & evals</li>
+                <li>• Cost & token budgeting</li>
+                <li>• Automated validation</li>
+                <li>• Background watchdogs</li>
               </ul>
             </div>
 
@@ -548,10 +547,10 @@ export default function App() {
               <ul className="text-xs text-zinc-300 space-y-1.5 font-mono">
                 <li>• Python (FastAPI, Flask)</li>
                 <li>• TypeScript / Node.js</li>
-                <li>• REST & WebSockets</li>
-                <li>• SPARQL & GraphQL</li>
+                <li>• REST APIs & WebSockets</li>
+                <li>• PostgreSQL & SQLite</li>
                 <li>• Docker & Linux Bash</li>
-                <li>• SQLite / PostgreSQL</li>
+                <li>• SPARQL & GraphQL</li>
               </ul>
             </div>
 
@@ -561,11 +560,11 @@ export default function App() {
                 Frontend & Viz
               </div>
               <ul className="text-xs text-zinc-300 space-y-1.5 font-mono">
-                <li>• React & Next.js 16</li>
-                <li>• Three.js / WebGL</li>
+                <li>• React & Next.js</li>
+                <li>• TypeScript</li>
                 <li>• Tailwind CSS</li>
-                <li>• jsPDF & Canvas API</li>
-                <li>• Force-Directed Graphs</li>
+                <li>• Three.js / WebGL</li>
+                <li>• Canvas & SVG graphs</li>
                 <li>• Responsive UI/UX</li>
               </ul>
             </div>
@@ -577,11 +576,11 @@ export default function App() {
               </div>
               <ul className="text-xs text-zinc-300 space-y-1.5 font-mono">
                 <li>• Excel VBA Automation</li>
-                <li>• WMS Systems (Walmart)</li>
-                <li>• Incident Management</li>
-                <li>• Root-Cause Analysis</li>
-                <li>• n8n Orchestration</li>
-                <li>• SOP Standardization</li>
+                <li>• Warehouse logistics (WMS)</li>
+                <li>• Data reconciliation</li>
+                <li>• n8n workflows</li>
+                <li>• Root-cause analysis</li>
+                <li>• Process documentation</li>
               </ul>
             </div>
 
@@ -592,10 +591,10 @@ export default function App() {
         <section id="contact" className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-zinc-900/80 to-zinc-950 border border-zinc-800 text-center relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-4">
             <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Let's build high-leverage systems together.
+              Let's connect.
             </h2>
             <p className="text-zinc-300 text-sm sm:text-base leading-relaxed">
-              I am actively interviewing for full-time <strong>AI Automation Engineer</strong>, <strong>Solutions Architect</strong>, and <strong>Forward-Deployed Engineering</strong> positions in Greater Vancouver and remote across Canada.
+              I'm open to full-time roles in AI automation, solutions engineering, and backend systems. Based in Greater Vancouver, open to local, hybrid, or remote roles across Canada.
             </p>
 
             <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
@@ -604,14 +603,14 @@ export default function App() {
                 className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm transition inline-flex items-center gap-2 shadow-lg shadow-emerald-500/20"
               >
                 <Mail className="w-4 h-4" />
-                anshdeepsaini@gmail.com
+                Send an Email
               </a>
               <button
                 onClick={copyEmail}
                 className="px-4 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 text-sm font-mono transition inline-flex items-center gap-2"
               >
                 {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                {copiedEmail ? 'Copied' : 'Copy'}
+                {copiedEmail ? 'Email Copied' : 'Copy Address'}
               </button>
             </div>
 
@@ -620,18 +619,21 @@ export default function App() {
                 <MapPin className="w-3.5 h-3.5 text-zinc-500" />
                 Vancouver, BC
               </span>
-              <span className="inline-flex items-center gap-1.5">
-                <Phone className="w-3.5 h-3.5 text-zinc-500" />
-                +1 (604) 518-0694
-              </span>
               <a
-                href="https://linkedin.com/in/sanshdeep"
+                href="mailto:anshdeepsaini@gmail.com"
+                className="inline-flex items-center gap-1.5 hover:text-white transition"
+              >
+                <Mail className="w-3.5 h-3.5 text-zinc-500" />
+                anshdeepsaini@gmail.com
+              </a>
+              <a
+                href="https://linkedin.com/in/anshdeeps"
                 target="_blank"
                 rel="noreferrer"
                 className="inline-flex items-center gap-1.5 hover:text-white transition"
               >
                 <LinkedinIcon className="w-3.5 h-3.5 text-zinc-500" />
-                linkedin.com/in/sanshdeep
+                linkedin.com/in/anshdeeps
               </a>
             </div>
           </div>
@@ -639,7 +641,7 @@ export default function App() {
 
         {/* Footer */}
         <footer className="mt-12 text-center text-xs text-zinc-600 font-mono">
-          <p>© {new Date().getFullYear()} Anshdeep Singh. Built for speed, clarity, and zero fluff.</p>
+          <p>© {new Date().getFullYear()} Anshdeep Singh. All rights reserved.</p>
         </footer>
 
       </div>
