@@ -46,32 +46,33 @@ export default function App() {
     <div className="min-h-screen bg-zinc-950 text-zinc-100 selection:bg-emerald-500/20 selection:text-emerald-300 font-sans antialiased">
       {/* Background Subtle Ambient Glow */}
       <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[700px] h-[500px] bg-emerald-500/5 blur-[120px] rounded-full" />
-        <div className="absolute top-[800px] -left-40 w-[500px] h-[500px] bg-cyan-500/5 blur-[140px] rounded-full" />
+        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1100px] h-[650px] bg-emerald-500/5 blur-[150px] rounded-full" />
+        <div className="absolute top-[800px] -left-40 w-[700px] h-[700px] bg-cyan-500/5 blur-[160px] rounded-full" />
+        <div className="absolute top-[1600px] right-0 w-[600px] h-[600px] bg-emerald-500/5 blur-[150px] rounded-full" />
       </div>
 
-      {/* Main Container */}
-      <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 py-8 md:py-16">
+      {/* Main Container - Expansive Desktop Width */}
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 py-8 md:py-14">
         
         {/* Navigation Bar */}
-        <header className="flex items-center justify-between border-b border-zinc-800/80 pb-6 mb-12">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-zinc-900 border border-zinc-700/60 flex items-center justify-center font-mono font-bold text-emerald-400 shadow-inner">
+        <header className="flex items-center justify-between border-b border-zinc-800/80 pb-6 mb-12 lg:mb-16">
+          <div className="flex items-center gap-3.5">
+            <div className="h-11 w-11 rounded-xl bg-zinc-900 border border-zinc-700/60 flex items-center justify-center font-bold text-emerald-400 shadow-inner text-base">
               AS
             </div>
             <div>
-              <div className="font-semibold text-zinc-100 tracking-tight text-base flex items-center gap-2">
+              <div className="font-semibold text-zinc-100 tracking-tight text-lg flex items-center gap-2">
                 Anshdeep Singh
                 <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               </div>
-              <p className="text-xs text-zinc-400 font-mono">AI Systems & Automation Engineer</p>
+              <p className="text-sm text-zinc-400">AI Systems & Automation Engineer</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <a
               href="mailto:anshdeepsaini@gmail.com"
-              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
+              className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
               aria-label="Send Email"
               title="Email: anshdeepsaini@gmail.com"
             >
@@ -81,7 +82,7 @@ export default function App() {
               href="https://github.com/Anshdeep-Singh"
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
+              className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
               aria-label="GitHub Profile"
               title="GitHub"
             >
@@ -91,7 +92,7 @@ export default function App() {
               href="https://linkedin.com/in/anshdeeps"
               target="_blank"
               rel="noreferrer"
-              className="p-2 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
+              className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
               aria-label="LinkedIn Profile"
               title="LinkedIn"
             >
@@ -101,54 +102,54 @@ export default function App() {
         </header>
 
         {/* Hero Section */}
-        <section className="mb-20">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono mb-6">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
+        <section className="mb-24 lg:mb-32">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium mb-6">
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
             Available for Full-time Roles · Vancouver & Remote
           </div>
 
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-[1.15]">
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.12] max-w-5xl">
             Building reliable AI workflows, practical automations, and internal tools.
           </h1>
 
-          <p className="text-zinc-300 text-base sm:text-lg leading-relaxed max-w-3xl mb-8">
+          <p className="text-zinc-300 text-base sm:text-lg lg:text-xl leading-relaxed max-w-4xl mb-10">
             I'm an AI systems and automation engineer based in Vancouver. My background spans hands-on machine learning research, hardware reliability testing for aerospace ICs, and warehouse operations at Walmart. I build systems that make AI dependable in daily work—clean data validation, robust agent pipelines, and practical automations that save teams real hours.
           </p>
 
           {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-            <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-              <div className="text-2xl font-bold font-mono text-emerald-400 mb-1">-38% Audit Time</div>
-              <p className="text-xs text-zinc-400 leading-snug">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-6 mb-10">
+            <div className="p-5 lg:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-zinc-700 transition">
+              <div className="text-3xl lg:text-4xl font-bold font-mono text-emerald-400 mb-2">-38% Audit Time</div>
+              <p className="text-sm lg:text-base text-zinc-300 leading-normal">
                 Cut daily logistics KPI verification from 4 hours to 2.5 hours at Walmart's distribution centre.
               </p>
             </div>
-            <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-              <div className="text-2xl font-bold font-mono text-cyan-400 mb-1">Valid JSON Always</div>
-              <p className="text-xs text-zinc-400 leading-snug">
+            <div className="p-5 lg:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-zinc-700 transition">
+              <div className="text-3xl lg:text-4xl font-bold font-mono text-cyan-400 mb-2">Valid JSON Always</div>
+              <p className="text-sm lg:text-base text-zinc-300 leading-normal">
                 Strict Pydantic and Zod schema validation so AI agent responses never break downstream apps.
               </p>
             </div>
-            <div className="p-4 rounded-xl bg-zinc-900/60 border border-zinc-800/80">
-              <div className="text-2xl font-bold font-mono text-purple-400 mb-1">Silent Watchdogs</div>
-              <p className="text-xs text-zinc-400 leading-snug">
+            <div className="p-5 lg:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-zinc-700 transition">
+              <div className="text-3xl lg:text-4xl font-bold font-mono text-purple-400 mb-2">Silent Watchdogs</div>
+              <p className="text-sm lg:text-base text-zinc-300 leading-normal">
                 Scheduled background monitoring scripts that stay quiet unless an issue actually needs attention.
               </p>
             </div>
           </div>
 
           {/* Action Links */}
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3.5">
             <a
               href="#projects"
-              className="px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-semibold text-sm transition inline-flex items-center gap-2 shadow-lg shadow-emerald-500/20"
+              className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-semibold text-sm sm:text-base transition inline-flex items-center gap-2.5 shadow-lg shadow-emerald-500/20"
             >
               <Cpu className="w-4 h-4" />
               View Projects
             </a>
             <a
               href="mailto:anshdeepsaini@gmail.com"
-              className="px-4 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 text-sm font-medium transition inline-flex items-center gap-2"
+              className="px-5 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 text-sm sm:text-base font-medium transition inline-flex items-center gap-2.5"
             >
               <Mail className="w-4 h-4" />
               Get in Touch
@@ -157,7 +158,7 @@ export default function App() {
               href="https://github.com/Anshdeep-Singh"
               target="_blank"
               rel="noreferrer"
-              className="px-4 py-2.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 text-sm font-medium transition inline-flex items-center gap-2"
+              className="px-5 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 text-sm sm:text-base font-medium transition inline-flex items-center gap-2.5"
             >
               <GithubIcon className="w-4 h-4" />
               GitHub
@@ -166,32 +167,32 @@ export default function App() {
         </section>
 
         {/* Flagship Projects */}
-        <section id="projects" className="mb-20 scroll-mt-12">
-          <div className="flex items-center justify-between mb-8 pb-3 border-b border-zinc-800">
+        <section id="projects" className="mb-24 lg:mb-32 scroll-mt-12">
+          <div className="flex items-center justify-between mb-8 pb-4 border-b border-zinc-800">
             <div>
-              <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-                <Boxes className="w-6 h-6 text-emerald-400" />
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight flex items-center gap-3">
+                <Boxes className="w-7 h-7 text-emerald-400" />
                 Featured Projects
               </h2>
-              <p className="text-xs text-zinc-400 font-mono mt-1">
+              <p className="text-sm sm:text-base text-zinc-400 mt-1.5">
                 Working systems built for real-world reliability and measurable time savings
               </p>
             </div>
           </div>
 
-          <div className="space-y-8">
+          <div className="space-y-8 lg:space-y-10">
             
             {/* Project 1: IntelSpider */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 transition">
+            <div className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 transition">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div>
                   <div className="flex items-center gap-3">
-                    <h3 className="text-xl sm:text-2xl font-bold text-white">IntelSpider</h3>
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white">IntelSpider</h3>
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                       LIVE DEMO
                     </span>
                   </div>
-                  <p className="text-zinc-400 text-sm mt-1">
+                  <p className="text-base sm:text-lg text-zinc-300 mt-2">
                     Multi-agent research tool for competitive intelligence and automated company dossiers
                   </p>
                 </div>
@@ -200,16 +201,16 @@ export default function App() {
                     href="https://intelspider.anshdeepsingh.com"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-mono transition"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-medium transition"
                   >
                     Live Demo
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-4 h-4" />
                   </a>
                   <a
                     href="https://github.com/Anshdeep-Singh/PoW_1"
                     target="_blank"
                     rel="noreferrer"
-                    className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
+                    className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
                     title="Source Repository"
                   >
                     <GithubIcon className="w-4 h-4" />
@@ -218,40 +219,40 @@ export default function App() {
               </div>
 
               {/* Badges */}
-              <div className="flex flex-wrap gap-1.5 mb-6">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {['Python / FastAPI', 'Multi-Agent Pipeline', 'Pydantic Schemas', 'Docker', 'Web Scraping'].map((tag) => (
-                  <span key={tag} className="px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 text-[11px] font-mono border border-zinc-700/60">
+                  <span key={tag} className="px-3 py-1 rounded-lg bg-zinc-800 text-zinc-300 text-xs font-mono border border-zinc-700/60">
                     {tag}
                   </span>
                 ))}
               </div>
 
               {/* Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-zinc-800/80">
-                <div className="space-y-1.5">
-                  <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Activity className="w-3.5 h-3.5 text-cyan-400" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 pt-6 border-t border-zinc-800/80">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-cyan-400" />
                     The Problem
                   </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                     Sales and strategy teams spend hours checking competitor websites, pricing pages, and public filings by hand. Raw LLMs trying to do this often make up numbers and return messy text.
                   </p>
                 </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Network className="w-3.5 h-3.5 text-emerald-400" />
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+                    <Network className="w-4 h-4 text-emerald-400" />
                     How It Works
                   </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                     Split into focused workers: one runs reconnaissance, another scrapes web pages, another extracts SEC filings, and an aggregator organizes the findings. Pydantic schemas validate each output so data stays consistent.
                   </p>
                 </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Zap className="w-3.5 h-3.5 text-purple-400" />
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-purple-400" />
                     The Result
                   </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                     Turns messy company web data into verified company dossiers, SWOT breakdowns, and sales battlecards in seconds, with caching to keep API costs minimal.
                   </p>
                 </div>
@@ -259,16 +260,16 @@ export default function App() {
             </div>
 
             {/* Project 2: CorpGraph 3D */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 transition">
+            <div className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 transition">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div>
                   <div className="flex items-center gap-3">
-                    <h3 className="text-xl sm:text-2xl font-bold text-white">CorpGraph 3D</h3>
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white">CorpGraph 3D</h3>
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
                       LIVE DEMO
                     </span>
                   </div>
-                  <p className="text-zinc-400 text-sm mt-1">
+                  <p className="text-base sm:text-lg text-zinc-300 mt-2">
                     Interactive 3D visualization of corporate ownership networks and parent-subsidiary relationships
                   </p>
                 </div>
@@ -277,16 +278,16 @@ export default function App() {
                     href="https://corpgraph.anshdeepsingh.com"
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs font-mono transition"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-medium transition"
                   >
                     Live Demo
-                    <ArrowUpRight className="w-3.5 h-3.5" />
+                    <ArrowUpRight className="w-4 h-4" />
                   </a>
                   <a
                     href="https://github.com/Anshdeep-Singh/corpgraph-3d"
                     target="_blank"
                     rel="noreferrer"
-                    className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
+                    className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
                     title="Source Repository"
                   >
                     <GithubIcon className="w-4 h-4" />
@@ -295,40 +296,40 @@ export default function App() {
               </div>
 
               {/* Badges */}
-              <div className="flex flex-wrap gap-1.5 mb-6">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {['Next.js', 'Three.js / WebGL', '3d-force-graph', 'Wikidata SPARQL API', 'jsPDF Vector Export', 'TypeScript'].map((tag) => (
-                  <span key={tag} className="px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 text-[11px] font-mono border border-zinc-700/60">
+                  <span key={tag} className="px-3 py-1 rounded-lg bg-zinc-800 text-zinc-300 text-xs font-mono border border-zinc-700/60">
                     {tag}
                   </span>
                 ))}
               </div>
 
               {/* Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-zinc-800/80">
-                <div className="space-y-1.5">
-                  <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Activity className="w-3.5 h-3.5 text-cyan-400" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 pt-6 border-t border-zinc-800/80">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-cyan-400" />
                     The Problem
                   </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                     Tracing corporate ownership across multiple tiers of subsidiaries and investment stakes usually requires expensive enterprise graph databases or slow server pipelines.
                   </p>
                 </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Network className="w-3.5 h-3.5 text-emerald-400" />
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+                    <Network className="w-4 h-4 text-emerald-400" />
                     How It Works
                   </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                     Directly queries live Wikidata SPARQL endpoints from the browser, builds the graph structure in memory, and renders the 3D network with Three.js—no backend servers or database hosting needed.
                   </p>
                 </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Zap className="w-3.5 h-3.5 text-purple-400" />
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-purple-400" />
                     The Result
                   </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                     Smooth 3D navigation across corporate connections with node search, relationship details, and clean one-click PDF export for research and due diligence reports.
                   </p>
                 </div>
@@ -336,62 +337,62 @@ export default function App() {
             </div>
 
             {/* Project 3: Enterprise Supply Chain Automation */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 transition">
+            <div className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 transition">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
                 <div>
                   <div className="flex items-center gap-3">
-                    <h3 className="text-xl sm:text-2xl font-bold text-white">Enterprise Supply Chain & QA Automation</h3>
-                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                    <h3 className="text-2xl sm:text-3xl font-bold text-white">Enterprise Supply Chain & QA Automation</h3>
+                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
                       INTERNAL TOOLING
                     </span>
                   </div>
-                  <p className="text-zinc-400 text-sm mt-1">
+                  <p className="text-base sm:text-lg text-zinc-300 mt-2">
                     Walmart Distribution Centre (Surrey, BC) · Warehouse operations automation
                   </p>
                 </div>
                 <div className="flex items-center gap-2 shrink-0">
-                  <span className="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-zinc-800 text-zinc-300 text-xs font-mono">
-                    <Building2 className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-800 text-zinc-300 text-xs sm:text-sm font-medium">
+                    <Building2 className="w-4 h-4 text-emerald-400" />
                     Internal Enterprise Tooling
                   </span>
                 </div>
               </div>
 
               {/* Badges */}
-              <div className="flex flex-wrap gap-1.5 mb-6">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {['Excel VBA Automation', 'WMS Data Pipeline', 'Data Reconciliation', 'Process Automation', 'Reporting'].map((tag) => (
-                  <span key={tag} className="px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 text-[11px] font-mono border border-zinc-700/60">
+                  <span key={tag} className="px-3 py-1 rounded-lg bg-zinc-800 text-zinc-300 text-xs font-mono border border-zinc-700/60">
                     {tag}
                   </span>
                 ))}
               </div>
 
               {/* Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-4 border-t border-zinc-800/80">
-                <div className="space-y-1.5">
-                  <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Activity className="w-3.5 h-3.5 text-cyan-400" />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 pt-6 border-t border-zinc-800/80">
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+                    <Activity className="w-4 h-4 text-cyan-400" />
                     The Problem
                   </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                     Verifying daily cross-departmental KPI summaries and auditing outbound shipment files took over 4 hours every shift, done manually across messy spreadsheets with high risk of human error.
                   </p>
                 </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Network className="w-3.5 h-3.5 text-emerald-400" />
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+                    <Network className="w-4 h-4 text-emerald-400" />
                     How It Works
                   </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                     Built modular VBA automation tools that ingest raw Warehouse Management System transaction records, reconcile discrepancies against shipment logs, and highlight issues automatically.
                   </p>
                 </div>
-                <div className="space-y-1.5">
-                  <h4 className="text-xs font-mono font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-1.5">
-                    <Zap className="w-3.5 h-3.5 text-purple-400" />
+                <div className="space-y-2">
+                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-purple-400" />
                     The Result
                   </h4>
-                  <p className="text-xs text-zinc-400 leading-relaxed">
+                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                     Cut daily KPI verification by 38% (from 4 hours to 2.5 hours), reduced outbound audit reconciliation from 20 minutes to 5 minutes, and saved hours of manual work every week.
                   </p>
                 </div>
@@ -402,36 +403,36 @@ export default function App() {
         </section>
 
         {/* Background & Experience */}
-        <section className="mb-20">
-          <div className="flex items-center justify-between mb-8 pb-3 border-b border-zinc-800">
+        <section className="mb-24 lg:mb-32">
+          <div className="flex items-center justify-between mb-8 pb-4 border-b border-zinc-800">
             <div>
-              <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-                <Briefcase className="w-6 h-6 text-emerald-400" />
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight flex items-center gap-3">
+                <Briefcase className="w-7 h-7 text-emerald-400" />
                 Background & Experience
               </h2>
-              <p className="text-xs text-zinc-400 font-mono mt-1">
+              <p className="text-sm sm:text-base text-zinc-400 mt-1.5">
                 Practical roots in machine learning research, aerospace hardware testing, and data analytics
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
             
             {/* SCAAI */}
-            <div className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800/80 space-y-3">
+            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/80 space-y-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-semibold text-white text-base">AI Researcher</h3>
-                  <p className="text-xs text-zinc-400 font-mono">Symbiosis Centre for AI (SCAAI)</p>
+                  <h3 className="font-bold text-white text-lg sm:text-xl">AI Researcher</h3>
+                  <p className="text-sm sm:text-base text-zinc-400 mt-0.5">Symbiosis Centre for AI (SCAAI)</p>
                 </div>
-                <span className="text-[11px] font-mono text-zinc-500">2020 – 2021</span>
+                <span className="text-xs sm:text-sm font-mono text-zinc-400">2020 – 2021</span>
               </div>
-              <p className="text-xs text-zinc-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                 Researched generative models using Conditional Generative Adversarial Networks (CGANs). Built automated dataset preparation pipelines and multi-modal models for sequential image generation in PyTorch.
               </p>
-              <div className="flex flex-wrap gap-1 pt-1">
+              <div className="flex flex-wrap gap-1.5 pt-1">
                 {['CGANs', 'PyTorch', 'Data Pipelines', 'Computer Vision'].map((t) => (
-                  <span key={t} className="px-2 py-0.5 rounded bg-zinc-800/80 text-[10px] font-mono text-zinc-400">
+                  <span key={t} className="px-2.5 py-1 rounded bg-zinc-800/80 text-xs font-mono text-zinc-400">
                     {t}
                   </span>
                 ))}
@@ -439,20 +440,20 @@ export default function App() {
             </div>
 
             {/* Semi-Conductor Laboratory */}
-            <div className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800/80 space-y-3">
+            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/80 space-y-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-semibold text-white text-base">Reliability Engineer</h3>
-                  <p className="text-xs text-zinc-400 font-mono">Semi-Conductor Laboratory (Govt Dept of Space / ISRO)</p>
+                  <h3 className="font-bold text-white text-lg sm:text-xl">Reliability Engineer</h3>
+                  <p className="text-sm sm:text-base text-zinc-400 mt-0.5">Semi-Conductor Laboratory (Govt Dept of Space / ISRO)</p>
                 </div>
-                <span className="text-[11px] font-mono text-zinc-500">2020 – 2021</span>
+                <span className="text-xs sm:text-sm font-mono text-zinc-400">2020 – 2021</span>
               </div>
-              <p className="text-xs text-zinc-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                 Tested integrated circuits under extreme electrical and environmental conditions for aerospace applications. Wrote Python tools to analyze telemetry data, determine voltage thresholds, and diagnose failure causes.
               </p>
-              <div className="flex flex-wrap gap-1 pt-1">
+              <div className="flex flex-wrap gap-1.5 pt-1">
                 {['Python', 'Hardware Stress Testing', 'Telemetry Data', 'Failure Analysis'].map((t) => (
-                  <span key={t} className="px-2 py-0.5 rounded bg-zinc-800/80 text-[10px] font-mono text-zinc-400">
+                  <span key={t} className="px-2.5 py-1 rounded bg-zinc-800/80 text-xs font-mono text-zinc-400">
                     {t}
                   </span>
                 ))}
@@ -460,20 +461,20 @@ export default function App() {
             </div>
 
             {/* Tekolutions */}
-            <div className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800/80 space-y-3">
+            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/80 space-y-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-semibold text-white text-base">Machine Learning Engineer</h3>
-                  <p className="text-xs text-zinc-400 font-mono">Tekolutions</p>
+                  <h3 className="font-bold text-white text-lg sm:text-xl">Machine Learning Engineer</h3>
+                  <p className="text-sm sm:text-base text-zinc-400 mt-0.5">Tekolutions</p>
                 </div>
-                <span className="text-[11px] font-mono text-zinc-500">2021</span>
+                <span className="text-xs sm:text-sm font-mono text-zinc-400">2021</span>
               </div>
-              <p className="text-xs text-zinc-300 leading-relaxed">
+              <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
                 Built multimodal evaluation pipelines combining CNN computer vision for facial expression tracking with Librosa audio feature extraction for speech and sentiment evaluation.
               </p>
-              <div className="flex flex-wrap gap-1 pt-1">
+              <div className="flex flex-wrap gap-1.5 pt-1">
                 {['CNNs', 'Audio Extraction', 'TensorFlow', 'Emotion Analysis'].map((t) => (
-                  <span key={t} className="px-2 py-0.5 rounded bg-zinc-800/80 text-[10px] font-mono text-zinc-400">
+                  <span key={t} className="px-2.5 py-1 rounded bg-zinc-800/80 text-xs font-mono text-zinc-400">
                     {t}
                   </span>
                 ))}
@@ -481,26 +482,26 @@ export default function App() {
             </div>
 
             {/* Education */}
-            <div className="p-6 rounded-xl bg-zinc-900/50 border border-zinc-800/80 space-y-3">
+            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/80 space-y-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-semibold text-white text-base">Education & Credentials</h3>
-                  <p className="text-xs text-zinc-400 font-mono">Degrees & Certifications</p>
+                  <h3 className="font-bold text-white text-lg sm:text-xl">Education & Credentials</h3>
+                  <p className="text-sm sm:text-base text-zinc-400 mt-0.5">Degrees & Certifications</p>
                 </div>
-                <span className="text-[11px] font-mono text-zinc-500">Vancouver & India</span>
+                <span className="text-xs sm:text-sm font-mono text-zinc-400">Vancouver & India</span>
               </div>
-              <ul className="text-xs text-zinc-300 space-y-2 leading-relaxed">
+              <ul className="text-sm sm:text-base text-zinc-300 space-y-3 leading-relaxed">
                 <li>
-                  <strong className="text-zinc-100">Post-Baccalaureate Diploma in Data Analytics:</strong> Douglas College (Vancouver, BC)
+                  <strong className="text-zinc-100 font-semibold">Post-Baccalaureate Diploma in Data Analytics:</strong> Douglas College (Vancouver, BC)
                 </li>
                 <li>
-                  <strong className="text-zinc-100">B.Tech in Electronics & Telecommunication:</strong> Symbiosis Institute of Technology
+                  <strong className="text-zinc-100 font-semibold">B.Tech in Electronics & Telecommunication:</strong> Symbiosis Institute of Technology
                 </li>
                 <li>
-                  <strong className="text-zinc-100">Diploma in Business Management:</strong> SIBM Pune
+                  <strong className="text-zinc-100 font-semibold">Diploma in Business Management:</strong> SIBM Pune
                 </li>
                 <li>
-                  <strong className="text-zinc-100">Junior Data Analyst Professional Certificate:</strong> NPower Canada
+                  <strong className="text-zinc-100 font-semibold">Junior Data Analyst Professional Certificate:</strong> NPower Canada
                 </li>
               </ul>
             </div>
@@ -509,27 +510,27 @@ export default function App() {
         </section>
 
         {/* Skills & Technologies */}
-        <section className="mb-20">
-          <div className="flex items-center justify-between mb-8 pb-3 border-b border-zinc-800">
+        <section className="mb-24 lg:mb-32">
+          <div className="flex items-center justify-between mb-8 pb-4 border-b border-zinc-800">
             <div>
-              <h2 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2.5">
-                <Terminal className="w-6 h-6 text-emerald-400" />
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight flex items-center gap-3">
+                <Terminal className="w-7 h-7 text-emerald-400" />
                 Skills & Technologies
               </h2>
-              <p className="text-xs text-zinc-400 font-mono mt-1">
+              <p className="text-sm sm:text-base text-zinc-400 mt-1.5">
                 Tools and frameworks I use to build reliable software and automated workflows
               </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
             
-            <div className="p-5 rounded-xl bg-zinc-900/40 border border-zinc-800/80">
-              <div className="text-emerald-400 font-mono text-xs uppercase tracking-wider font-semibold mb-3 flex items-center gap-1.5">
+            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80">
+              <div className="text-emerald-400 font-semibold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Cpu className="w-4 h-4" />
                 Agentic & AI
               </div>
-              <ul className="text-xs text-zinc-300 space-y-1.5 font-mono">
+              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5 font-normal">
                 <li>• Multi-agent workflows</li>
                 <li>• Pydantic & Zod schemas</li>
                 <li>• Prompt design & evals</li>
@@ -539,12 +540,12 @@ export default function App() {
               </ul>
             </div>
 
-            <div className="p-5 rounded-xl bg-zinc-900/40 border border-zinc-800/80">
-              <div className="text-cyan-400 font-mono text-xs uppercase tracking-wider font-semibold mb-3 flex items-center gap-1.5">
+            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80">
+              <div className="text-cyan-400 font-semibold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Database className="w-4 h-4" />
                 Backend & APIs
               </div>
-              <ul className="text-xs text-zinc-300 space-y-1.5 font-mono">
+              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5 font-normal">
                 <li>• Python (FastAPI, Flask)</li>
                 <li>• TypeScript / Node.js</li>
                 <li>• REST APIs & WebSockets</li>
@@ -554,12 +555,12 @@ export default function App() {
               </ul>
             </div>
 
-            <div className="p-5 rounded-xl bg-zinc-900/40 border border-zinc-800/80">
-              <div className="text-purple-400 font-mono text-xs uppercase tracking-wider font-semibold mb-3 flex items-center gap-1.5">
+            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80">
+              <div className="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Layers className="w-4 h-4" />
                 Frontend & Viz
               </div>
-              <ul className="text-xs text-zinc-300 space-y-1.5 font-mono">
+              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5 font-normal">
                 <li>• React & Next.js</li>
                 <li>• TypeScript</li>
                 <li>• Tailwind CSS</li>
@@ -569,12 +570,12 @@ export default function App() {
               </ul>
             </div>
 
-            <div className="p-5 rounded-xl bg-zinc-900/40 border border-zinc-800/80">
-              <div className="text-amber-400 font-mono text-xs uppercase tracking-wider font-semibold mb-3 flex items-center gap-1.5">
+            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80">
+              <div className="text-amber-400 font-semibold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Building2 className="w-4 h-4" />
                 Operations & Tooling
               </div>
-              <ul className="text-xs text-zinc-300 space-y-1.5 font-mono">
+              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5 font-normal">
                 <li>• Excel VBA Automation</li>
                 <li>• Warehouse logistics (WMS)</li>
                 <li>• Data reconciliation</li>
@@ -588,51 +589,51 @@ export default function App() {
         </section>
 
         {/* Contact / Call To Action */}
-        <section id="contact" className="p-8 sm:p-12 rounded-3xl bg-gradient-to-b from-zinc-900/80 to-zinc-950 border border-zinc-800 text-center relative overflow-hidden">
+        <section id="contact" className="p-8 sm:p-14 lg:p-16 rounded-3xl bg-gradient-to-b from-zinc-900/90 to-zinc-950 border border-zinc-800 text-center relative overflow-hidden">
           <div className="max-w-2xl mx-auto space-y-4">
-            <h2 className="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
               Let's connect.
             </h2>
-            <p className="text-zinc-300 text-sm sm:text-base leading-relaxed">
+            <p className="text-zinc-300 text-base sm:text-lg leading-relaxed">
               I'm open to full-time roles in AI automation, solutions engineering, and backend systems. Based in Greater Vancouver, open to local, hybrid, or remote roles across Canada.
             </p>
 
-            <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
+            <div className="pt-6 flex flex-wrap items-center justify-center gap-3.5">
               <a
                 href="mailto:anshdeepsaini@gmail.com"
-                className="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm transition inline-flex items-center gap-2 shadow-lg shadow-emerald-500/20"
+                className="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm sm:text-base transition inline-flex items-center gap-2.5 shadow-lg shadow-emerald-500/20"
               >
                 <Mail className="w-4 h-4" />
                 Send an Email
               </a>
               <button
                 onClick={copyEmail}
-                className="px-4 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 text-sm font-mono transition inline-flex items-center gap-2"
+                className="px-5 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 text-sm sm:text-base font-medium transition inline-flex items-center gap-2.5"
               >
                 {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                 {copiedEmail ? 'Email Copied' : 'Copy Address'}
               </button>
             </div>
 
-            <div className="pt-6 flex flex-wrap items-center justify-center gap-6 text-xs text-zinc-400 font-mono">
-              <span className="inline-flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-zinc-500" />
+            <div className="pt-8 flex flex-wrap items-center justify-center gap-8 text-sm sm:text-base text-zinc-300">
+              <span className="inline-flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-emerald-400" />
                 Vancouver, BC
               </span>
               <a
                 href="mailto:anshdeepsaini@gmail.com"
-                className="inline-flex items-center gap-1.5 hover:text-white transition"
+                className="inline-flex items-center gap-2 hover:text-white transition"
               >
-                <Mail className="w-3.5 h-3.5 text-zinc-500" />
+                <Mail className="w-4 h-4 text-emerald-400" />
                 anshdeepsaini@gmail.com
               </a>
               <a
                 href="https://linkedin.com/in/anshdeeps"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1.5 hover:text-white transition"
+                className="inline-flex items-center gap-2 hover:text-white transition"
               >
-                <LinkedinIcon className="w-3.5 h-3.5 text-zinc-500" />
+                <LinkedinIcon className="w-4 h-4 text-emerald-400" />
                 linkedin.com/in/anshdeeps
               </a>
             </div>
@@ -640,7 +641,7 @@ export default function App() {
         </section>
 
         {/* Footer */}
-        <footer className="mt-12 text-center text-xs text-zinc-600 font-mono">
+        <footer className="mt-14 pb-4 text-center text-sm text-zinc-500 font-normal">
           <p>© {new Date().getFullYear()} Anshdeep Singh. All rights reserved.</p>
         </footer>
 
