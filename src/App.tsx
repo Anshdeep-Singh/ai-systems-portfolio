@@ -6,15 +6,15 @@ import {
   ArrowUpRight,
   Mail,
   Database,
-  Network,
-  Activity,
   Copy,
   Check,
   Building2,
-  Boxes,
-  Briefcase,
+  Sliders,
+  ChevronRight,
   Zap,
-  MapPin
+  MapPin,
+  Network,
+  Workflow
 } from 'lucide-react';
 
 function GithubIcon({ className = "w-4 h-4" }: { className?: string }) {
@@ -33,8 +33,74 @@ function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
+interface Project {
+  id: string;
+  category: 'ai' | 'viz' | 'enterprise';
+  code: string;
+  title: string;
+  badge: string;
+  subtitle: string;
+  demoUrl?: string;
+  githubUrl?: string;
+  isInternal?: boolean;
+  tags: string[];
+  problem: string;
+  howItWorks: string;
+  result: string;
+  metrics: { label: string; value: string };
+}
+
+const projects: Project[] = [
+  {
+    id: 'intelspider',
+    category: 'ai',
+    code: 'SYS-01',
+    title: 'IntelSpider 2.0',
+    badge: 'LIVE DEPLOYMENT',
+    subtitle: 'Deterministic pre-meeting intelligence engine & cryptographic evidence audit ledger',
+    demoUrl: 'https://intelspider.anshdeepsingh.com',
+    githubUrl: 'https://github.com/Anshdeep-Singh/intelspider',
+    tags: ['Next.js 16 (App Router)', 'TypeScript', 'DNS-over-HTTPS (DoH)', 'HTTP Script Fingerprinting', 'Public ATS Harvesters', 'SHA-256 Ledger'],
+    problem: 'Sales & solutions engineers spend 45-60 minutes before calls manually searching SPF/MX records, tag managers, and job openings. Generic AI tools invent plausible-looking company profiles with unverified claims.',
+    howItWorks: 'Directly harvests raw infrastructure truth using parallel DNS-over-HTTPS (Google DoH for SPF, DMARC, MX), script tag detection (Segment, Datadog, Next.js), and public unauthenticated ATS APIs (Greenhouse/Lever). Every discovery hook is cryptographically hashed into an audit ledger.',
+    result: 'Generates verified pre-call technical battlecards in ~12 seconds. Every insight links directly to verifiable raw evidence, eliminating hallucinations and saving 80% of prep time.',
+    metrics: { label: 'RESEARCH TIME', value: '12s (from 45m)' }
+  },
+  {
+    id: 'corpgraph',
+    category: 'viz',
+    code: 'SYS-02',
+    title: 'CorpGraph 3D',
+    badge: 'LIVE DEPLOYMENT',
+    subtitle: 'Zero-backend interactive 3D corporate ownership & investor network explorer',
+    demoUrl: 'https://corpgraph.anshdeepsingh.com',
+    githubUrl: 'https://github.com/Anshdeep-Singh/corpgraph-3d',
+    tags: ['Three.js / WebGL', '3d-force-graph', 'Wikidata SPARQL API', 'jsPDF Vector Export', 'TypeScript', 'Zero-Backend Architecture'],
+    problem: 'Visualizing corporate hierarchies across multi-tier subsidiaries and venture stakes normally requires expensive enterprise graph databases (Neo4j), heavy cloud backends, and slow server rendering.',
+    howItWorks: 'Constructs dynamic SPARQL queries directly from the client browser against Wikidata endpoints, parses entity ontologies in Web Workers, and renders an interactive force-directed 3D WebGL physics graph with zero server compute overhead.',
+    result: 'Fast 60fps graph exploration with interactive node searching, relationship inspector, and instant vectorized PDF reporting for due diligence and corporate research.',
+    metrics: { label: 'SERVER INFRA COST', value: '$0 / mo' }
+  },
+  {
+    id: 'walmart-dc',
+    category: 'enterprise',
+    code: 'SYS-03',
+    title: 'Enterprise Supply Chain & QA Automation',
+    badge: 'INTERNAL PRODUCTION',
+    subtitle: 'Warehouse operations data reconciliation & daily audit velocity acceleration',
+    isInternal: true,
+    tags: ['Excel VBA Systems', 'WMS Data Ingestion', 'Audit Reconciliation', 'Logistics Automation', 'Operational Tooling'],
+    problem: 'Auditing cross-departmental shipment manifests and daily distribution KPIs required 4 hours of tedious manual cross-referencing across disconnected WMS spreadsheets, prone to transcription errors.',
+    howItWorks: 'Engineered automated VBA reconciliation pipelines that parse raw WMS transaction dumps, cross-compare SKU counts and shipment orders against master schedules, and flag anomalies with deterministic rule sets.',
+    result: 'Cut daily KPI audit verification time by 38% (from 4 hours to 2.5 hours) and accelerated outbound discrepancy audits from 20 minutes to 5 minutes, saving hours of manual workload every shift.',
+    metrics: { label: 'AUDIT VELOCITY', value: '-38% Latency' }
+  }
+];
+
 export default function App() {
   const [copiedEmail, setCopiedEmail] = useState(false);
+  const [activeTab, setActiveTab] = useState<'all' | 'ai' | 'viz' | 'enterprise'>('all');
+  const [activeSpec, setActiveSpec] = useState<'intelspider' | 'corpgraph' | 'walmart-dc'>('intelspider');
 
   const copyEmail = () => {
     navigator.clipboard.writeText('anshdeepsaini@gmail.com');
@@ -42,418 +108,502 @@ export default function App() {
     setTimeout(() => setCopiedEmail(false), 2000);
   };
 
-  return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 selection:bg-emerald-500/20 selection:text-emerald-300 font-sans antialiased">
-      {/* Background Subtle Ambient Glow */}
-      <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[1100px] h-[650px] bg-emerald-500/5 blur-[150px] rounded-full" />
-        <div className="absolute top-[800px] -left-40 w-[700px] h-[700px] bg-cyan-500/5 blur-[160px] rounded-full" />
-        <div className="absolute top-[1600px] right-0 w-[600px] h-[600px] bg-emerald-500/5 blur-[150px] rounded-full" />
-      </div>
+  const filteredProjects = activeTab === 'all'
+    ? projects
+    : projects.filter(p => p.category === activeTab);
 
-      {/* Main Container - Expansive Desktop Width */}
-      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] mx-auto px-6 sm:px-10 lg:px-12 xl:px-16 py-8 md:py-14">
-        
-        {/* Navigation Bar */}
-        <header className="flex items-center justify-between border-b border-zinc-800/80 pb-6 mb-12 lg:mb-16">
-          <div className="flex items-center gap-3.5">
-            <div className="h-11 w-11 rounded-xl bg-zinc-900 border border-zinc-700/60 flex items-center justify-center font-bold text-emerald-400 shadow-inner text-base">
-              AS
+  return (
+    <div className="min-h-screen bg-[#0c0d10] text-[#ececee] selection:bg-amber-500/20 selection:text-amber-200 font-sans antialiased relative">
+      
+      {/* Subtle Blueprint Micro-Grid Pattern */}
+      <div className="fixed inset-0 pointer-events-none z-0 bg-grid-pattern opacity-30" />
+
+      {/* Main Framework Container */}
+      <div className="relative z-10 max-w-7xl xl:max-w-[1400px] mx-auto px-5 sm:px-8 lg:px-12 py-6 sm:py-10">
+
+        {/* Top Hardware Instrument Bar */}
+        <div className="flex flex-wrap items-center justify-between border-b border-white/[0.08] pb-4 mb-8 sm:mb-12 text-xs font-mono text-zinc-400 gap-3">
+          <div className="flex items-center gap-3">
+            <span className="flex items-center gap-2 px-2.5 py-1 rounded bg-zinc-900 border border-zinc-800 text-zinc-300">
+              <span className="w-2 h-2 rounded-full bg-amber-500 inline-block shadow-[0_0_8px_rgba(245,158,11,0.6)]" />
+              STATUS: AVAILABLE FOR SYSTEMS ROLES
+            </span>
+            <span className="hidden md:inline-block text-zinc-500">//</span>
+            <span className="hidden md:inline-block text-zinc-400">VANCOUVER, BC [UTC-7]</span>
+          </div>
+
+          <div className="flex items-center gap-4 text-zinc-400">
+            <span className="hidden lg:inline text-zinc-500">FOCUS: DETERMINISTIC AI · WORKFLOWS · OPERATIONS</span>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://github.com/Anshdeep-Singh"
+                target="_blank"
+                rel="noreferrer"
+                className="p-1.5 rounded hover:text-white hover:bg-zinc-800 transition"
+                title="GitHub"
+                aria-label="GitHub"
+              >
+                <GithubIcon className="w-4 h-4" />
+              </a>
+              <a
+                href="https://linkedin.com/in/anshdeeps"
+                target="_blank"
+                rel="noreferrer"
+                className="p-1.5 rounded hover:text-white hover:bg-zinc-800 transition"
+                title="LinkedIn"
+                aria-label="LinkedIn"
+              >
+                <LinkedinIcon className="w-4 h-4" />
+              </a>
+              <a
+                href="mailto:anshdeepsaini@gmail.com"
+                className="p-1.5 rounded hover:text-white hover:bg-zinc-800 transition"
+                title="Email"
+                aria-label="Email"
+              >
+                <Mail className="w-4 h-4" />
+              </a>
             </div>
-            <div>
-              <div className="font-semibold text-zinc-100 tracking-tight text-lg flex items-center gap-2">
-                Anshdeep Singh
-                <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              </div>
-              <p className="text-sm text-zinc-400">AI Systems & Automation Engineer</p>
+          </div>
+        </div>
+
+        {/* Hero Section */}
+        <header className="mb-20 sm:mb-28 pt-2">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 text-xs font-mono text-amber-500 tracking-wider uppercase mb-5">
+              <span>[ ARCHITECTURAL PROFILE ]</span>
+              <span className="text-zinc-600">/</span>
+              <span>ANSHDEEP SINGH</span>
+            </div>
+
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-6 leading-[1.12]">
+              Engineering reliable AI pipelines, internal tools, and warehouse automation.
+            </h1>
+
+            <p className="text-zinc-300 text-base sm:text-lg lg:text-xl leading-relaxed mb-8 max-w-3xl">
+              I'm an AI systems and automation engineer based in Vancouver. My background combines aerospace semiconductor reliability testing, machine learning research, and distribution warehouse operations. I replace ungrounded AI prompts with strict deterministic contracts, client-side WebGL architectures, and practical automations that save real operating hours.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-3.5 pt-2">
+              <a
+                href="#systems"
+                className="px-5 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-semibold text-sm sm:text-base transition inline-flex items-center gap-2 shadow-[0_1px_2px_rgba(0,0,0,0.4)]"
+              >
+                Inspect Systems
+                <ChevronRight className="w-4 h-4" />
+              </a>
+              <button
+                onClick={copyEmail}
+                className="px-5 py-3 rounded-lg bg-[#14161b] hover:bg-[#1a1e24] border border-white/[0.1] text-zinc-200 text-sm sm:text-base font-medium transition inline-flex items-center gap-2"
+              >
+                {copiedEmail ? <Check className="w-4 h-4 text-amber-400" /> : <Copy className="w-4 h-4 text-zinc-400" />}
+                {copiedEmail ? 'Email Copied: anshdeepsaini@gmail.com' : 'Copy Email Address'}
+              </button>
+              <a
+                href="https://linkedin.com/in/anshdeeps"
+                target="_blank"
+                rel="noreferrer"
+                className="px-4 py-3 rounded-lg bg-[#14161b] hover:bg-[#1a1e24] border border-white/[0.1] text-zinc-300 text-sm sm:text-base font-medium transition inline-flex items-center gap-2"
+              >
+                <LinkedinIcon className="w-4 h-4 text-zinc-400" />
+                LinkedIn
+              </a>
             </div>
           </div>
 
-          <div className="flex items-center gap-2.5">
-            <a
-              href="mailto:anshdeepsaini@gmail.com"
-              className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
-              aria-label="Send Email"
-              title="Email: anshdeepsaini@gmail.com"
-            >
-              <Mail className="w-4 h-4" />
-            </a>
-            <a
-              href="https://github.com/Anshdeep-Singh"
-              target="_blank"
-              rel="noreferrer"
-              className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
-              aria-label="GitHub Profile"
-              title="GitHub"
-            >
-              <GithubIcon className="w-4 h-4" />
-            </a>
-            <a
-              href="https://linkedin.com/in/anshdeeps"
-              target="_blank"
-              rel="noreferrer"
-              className="p-2.5 rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-white hover:border-zinc-700 transition"
-              aria-label="LinkedIn Profile"
-              title="LinkedIn"
-            >
-              <LinkedinIcon className="w-4 h-4" />
-            </a>
+          {/* Precision Architectural Metrics Strip */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-14 pt-8 border-t border-white/[0.08]">
+            <div className="p-5 rounded-xl bg-[#121418] border border-white/[0.06] relative">
+              <div className="text-xs font-mono text-zinc-500 mb-2 flex items-center justify-between">
+                <span>METRIC // 01</span>
+                <span className="text-amber-500/80">WALMART DC</span>
+              </div>
+              <div className="text-3xl font-mono font-bold text-white mb-1.5">-38% Verification Time</div>
+              <p className="text-sm text-zinc-300">
+                Collapsed daily logistics KPI and inventory reconciliation from 4.0 hours to 2.5 hours per shift.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-xl bg-[#121418] border border-white/[0.06] relative">
+              <div className="text-xs font-mono text-zinc-500 mb-2 flex items-center justify-between">
+                <span>METRIC // 02</span>
+                <span className="text-amber-500/80">INTELLIGENCE</span>
+              </div>
+              <div className="text-3xl font-mono font-bold text-white mb-1.5">0% Schema Drift</div>
+              <p className="text-sm text-zinc-300">
+                Strict Pydantic and Zod data contracts guaranteeing every model output adheres to verifiable schemas.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-xl bg-[#121418] border border-white/[0.06] relative">
+              <div className="text-xs font-mono text-zinc-500 mb-2 flex items-center justify-between">
+                <span>METRIC // 03</span>
+                <span className="text-amber-500/80">ARCHITECTURE</span>
+              </div>
+              <div className="text-3xl font-mono font-bold text-white mb-1.5">Zero-Server Compute</div>
+              <p className="text-sm text-zinc-300">
+                Direct client-side SPARQL querying and WebGL graph synthesis eliminating monthly backend host bills.
+              </p>
+            </div>
           </div>
         </header>
 
-        {/* Hero Section */}
+        {/* Interactive Systems Architecture Teardown / Console */}
         <section className="mb-24 lg:mb-32">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-medium mb-6">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-            Available for Full-time Roles · Vancouver & Remote
-          </div>
-
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-white mb-6 leading-[1.12] max-w-5xl">
-            Building reliable AI workflows, practical automations, and internal tools.
-          </h1>
-
-          <p className="text-zinc-300 text-base sm:text-lg lg:text-xl leading-relaxed max-w-4xl mb-10">
-            I'm an AI systems and automation engineer based in Vancouver. My background spans hands-on machine learning research, hardware reliability testing for aerospace ICs, and warehouse operations at Walmart. I build systems that make AI dependable in daily work—clean data validation, robust agent pipelines, and practical automations that save teams real hours.
-          </p>
-
-          {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 lg:gap-6 mb-10">
-            <div className="p-5 lg:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-zinc-700 transition">
-              <div className="text-3xl lg:text-4xl font-bold font-mono text-emerald-400 mb-2">-38% Audit Time</div>
-              <p className="text-sm lg:text-base text-zinc-300 leading-normal">
-                Cut daily logistics KPI verification from 4 hours to 2.5 hours at Walmart's distribution centre.
-              </p>
+          <div className="border border-white/[0.08] rounded-2xl bg-[#111317] overflow-hidden">
+            {/* Terminal Top Bar */}
+            <div className="flex flex-wrap items-center justify-between px-5 py-3.5 bg-[#0e1014] border-b border-white/[0.08] text-xs font-mono">
+              <div className="flex items-center gap-2 text-zinc-400">
+                <Terminal className="w-4 h-4 text-amber-500" />
+                <span className="text-zinc-200 font-semibold">ARCHITECTURE TELEMETRY & PROOF-OF-WORK SPEC</span>
+              </div>
+              <div className="flex items-center gap-1.5 mt-2 sm:mt-0">
+                <button
+                  onClick={() => setActiveSpec('intelspider')}
+                  className={`px-3 py-1 rounded transition text-xs ${activeSpec === 'intelspider' ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30' : 'text-zinc-400 hover:text-zinc-200'}`}
+                >
+                  SYS-01 // INTELSPIDER
+                </button>
+                <button
+                  onClick={() => setActiveSpec('corpgraph')}
+                  className={`px-3 py-1 rounded transition text-xs ${activeSpec === 'corpgraph' ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30' : 'text-zinc-400 hover:text-zinc-200'}`}
+                >
+                  SYS-02 // CORPGRAPH 3D
+                </button>
+                <button
+                  onClick={() => setActiveSpec('walmart-dc')}
+                  className={`px-3 py-1 rounded transition text-xs ${activeSpec === 'walmart-dc' ? 'bg-amber-500/15 text-amber-300 border border-amber-500/30' : 'text-zinc-400 hover:text-zinc-200'}`}
+                >
+                  SYS-03 // SUPPLY CHAIN
+                </button>
+              </div>
             </div>
-            <div className="p-5 lg:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-zinc-700 transition">
-              <div className="text-3xl lg:text-4xl font-bold font-mono text-cyan-400 mb-2">Valid JSON Always</div>
-              <p className="text-sm lg:text-base text-zinc-300 leading-normal">
-                Strict Pydantic and Zod schema validation so AI agent responses never break downstream apps.
-              </p>
-            </div>
-            <div className="p-5 lg:p-6 rounded-2xl bg-zinc-900/60 border border-zinc-800/80 hover:border-zinc-700 transition">
-              <div className="text-3xl lg:text-4xl font-bold font-mono text-purple-400 mb-2">Silent Watchdogs</div>
-              <p className="text-sm lg:text-base text-zinc-300 leading-normal">
-                Scheduled background monitoring scripts that stay quiet unless an issue actually needs attention.
-              </p>
-            </div>
-          </div>
 
-          {/* Action Links */}
-          <div className="flex flex-wrap items-center gap-3.5">
-            <a
-              href="#projects"
-              className="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-semibold text-sm sm:text-base transition inline-flex items-center gap-2.5 shadow-lg shadow-emerald-500/20"
-            >
-              <Cpu className="w-4 h-4" />
-              View Projects
-            </a>
-            <a
-              href="mailto:anshdeepsaini@gmail.com"
-              className="px-5 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 text-sm sm:text-base font-medium transition inline-flex items-center gap-2.5"
-            >
-              <Mail className="w-4 h-4" />
-              Get in Touch
-            </a>
-            <a
-              href="https://github.com/Anshdeep-Singh"
-              target="_blank"
-              rel="noreferrer"
-              className="px-5 py-3 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-200 text-sm sm:text-base font-medium transition inline-flex items-center gap-2.5"
-            >
-              <GithubIcon className="w-4 h-4" />
-              GitHub
-            </a>
+            {/* Console Content */}
+            <div className="p-6 sm:p-8 font-mono text-xs sm:text-sm">
+              {activeSpec === 'intelspider' && (
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between text-zinc-500 text-xs border-b border-white/[0.06] pb-2">
+                    <span>SUBSYSTEM: PARALLEL DNS-OVER-HTTPS & CRYPTOGRAPHIC LEDGER</span>
+                    <span className="text-amber-500">LIVE AT INTELSPIDER.ANSHDEEPSINGH.COM</span>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 font-sans">
+                    <div>
+                      <div className="font-mono text-xs text-zinc-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Harvesting Layer
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        Queries Google DoH for SPF, DMARC, and MX records simultaneously while scanning client DOM for Datadog, Segment, and HubSpot signatures.
+                      </p>
+                    </div>
+                    <div>
+                      <div className="font-mono text-xs text-zinc-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Verification Proof
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        Every raw signal is signed into a SHA-256 evidence ledger. Agent hooks cannot cite ungrounded assertions; prompt evals verify grounding before return.
+                      </p>
+                    </div>
+                    <div>
+                      <div className="font-mono text-xs text-zinc-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Output Latency
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        Pre-call sales dossiers generated in 12s with direct links to live DNS and script proof, reducing manual research friction by 80%.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeSpec === 'corpgraph' && (
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between text-zinc-500 text-xs border-b border-white/[0.06] pb-2">
+                    <span>SUBSYSTEM: CLIENT-SIDE SPARQL ENGINE & WEBGL FORCE GRAPH</span>
+                    <span className="text-amber-500">LIVE AT CORPGRAPH.ANSHDEEPSINGH.COM</span>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 font-sans">
+                    <div>
+                      <div className="font-mono text-xs text-zinc-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Zero-Backend Querying
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        Browser fetches entity relationships directly from live Wikidata SPARQL endpoints, bypassing middle-tier databases and recurring server costs.
+                      </p>
+                    </div>
+                    <div>
+                      <div className="font-mono text-xs text-zinc-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        WebGL Simulation
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        Computes node links and parent-subsidiary hierarchies dynamically using Three.js and 3d-force-graph at 60fps with smooth orbital cameras.
+                      </p>
+                    </div>
+                    <div>
+                      <div className="font-mono text-xs text-zinc-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Vector Reporting
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        One-click client-side export to structured vector PDF reports for investment research and corporate compliance audits.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+
+              {activeSpec === 'walmart-dc' && (
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between text-zinc-500 text-xs border-b border-white/[0.06] pb-2">
+                    <span>SUBSYSTEM: WMS TRANSACTION INGESTION & DISCREPANCY RECONCILIATION</span>
+                    <span className="text-amber-500">PRODUCTION FACILITY (SURREY, BC)</span>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2 font-sans">
+                    <div>
+                      <div className="font-mono text-xs text-zinc-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Disparate Ingestion
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        Automated pipelines ingest fragmented WMS shift exports and cross-match pallet quantities against outbound carrier manifests.
+                      </p>
+                    </div>
+                    <div>
+                      <div className="font-mono text-xs text-zinc-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Anomaly Detection
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        Deterministic reconciliation rules immediately flag SKU mismatches and unverified shipments, cutting out human transcription error.
+                      </p>
+                    </div>
+                    <div>
+                      <div className="font-mono text-xs text-zinc-400 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                        <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+                        Operational Savings
+                      </div>
+                      <p className="text-zinc-300 text-sm leading-relaxed">
+                        Slashes daily shift verification time from 4.0 hours to 2.5 hours, freeing supervisors for critical floor logistics operations.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </section>
 
-        {/* Flagship Projects */}
-        <section id="projects" className="mb-24 lg:mb-32 scroll-mt-12">
-          <div className="flex items-center justify-between mb-8 pb-4 border-b border-zinc-800">
+        {/* Featured Projects Section */}
+        <section id="systems" className="mb-24 lg:mb-32 scroll-mt-12">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 pb-4 border-b border-white/[0.08] gap-4">
             <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight flex items-center gap-3">
-                <Boxes className="w-7 h-7 text-emerald-400" />
-                Featured Projects
+              <div className="inline-flex items-center gap-2 text-xs font-mono text-amber-500 uppercase tracking-wider mb-1">
+                <span>SYSTEMS DIRECTORY</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+                Featured Implementations
               </h2>
-              <p className="text-sm sm:text-base text-zinc-400 mt-1.5">
-                Working systems built for real-world reliability and measurable time savings
-              </p>
+            </div>
+
+            {/* Filter Tabs */}
+            <div className="flex items-center gap-1.5 bg-[#121418] p-1 rounded-lg border border-white/[0.06] text-xs font-mono self-start sm:self-auto">
+              <button
+                onClick={() => setActiveTab('all')}
+                className={`px-3 py-1.5 rounded transition ${activeTab === 'all' ? 'bg-amber-500 text-zinc-950 font-bold' : 'text-zinc-400 hover:text-white'}`}
+              >
+                ALL [3]
+              </button>
+              <button
+                onClick={() => setActiveTab('ai')}
+                className={`px-3 py-1.5 rounded transition ${activeTab === 'ai' ? 'bg-amber-500 text-zinc-950 font-bold' : 'text-zinc-400 hover:text-white'}`}
+              >
+                AI PIPELINES
+              </button>
+              <button
+                onClick={() => setActiveTab('viz')}
+                className={`px-3 py-1.5 rounded transition ${activeTab === 'viz' ? 'bg-amber-500 text-zinc-950 font-bold' : 'text-zinc-400 hover:text-white'}`}
+              >
+                CLIENT 3D
+              </button>
+              <button
+                onClick={() => setActiveTab('enterprise')}
+                className={`px-3 py-1.5 rounded transition ${activeTab === 'enterprise' ? 'bg-amber-500 text-zinc-950 font-bold' : 'text-zinc-400 hover:text-white'}`}
+              >
+                OPERATIONS
+              </button>
             </div>
           </div>
 
-          <div className="space-y-8 lg:space-y-10">
-            
-            {/* Project 1: IntelSpider */}
-            <div className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 transition">
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white">IntelSpider 2.0</h3>
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      LIVE DEMO
-                    </span>
+          {/* Project List */}
+          <div className="space-y-8">
+            {filteredProjects.map((project) => (
+              <article
+                key={project.id}
+                className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-[#121418] border border-white/[0.08] hover:border-white/[0.15] transition relative"
+              >
+                {/* Header Row */}
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+                  <div>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span className="font-mono text-xs text-amber-500 font-bold tracking-wider">
+                        {project.code}
+                      </span>
+                      <span className="text-zinc-600">//</span>
+                      <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                        {project.title}
+                      </h3>
+                      <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-medium bg-zinc-900 border border-zinc-700/80 text-zinc-300">
+                        {project.badge}
+                      </span>
+                    </div>
+                    <p className="text-base sm:text-lg text-zinc-300 mt-2 max-w-4xl">
+                      {project.subtitle}
+                    </p>
                   </div>
-                  <p className="text-base sm:text-lg text-zinc-300 mt-2">
-                    Deterministic pre-meeting account intelligence & cryptographic evidence audit ledger
-                  </p>
-                </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  <a
-                    href="https://intelspider.anshdeepsingh.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs sm:text-sm font-medium transition"
-                  >
-                    Live Demo
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                  <a
-                    href="https://github.com/Anshdeep-Singh/intelspider"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
-                    title="Source Repository"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
 
-              {/* Badges */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {['Next.js 16 (App Router)', 'TypeScript', 'DNS-over-HTTPS (DoH)', 'HTTP Fingerprinting', 'Public ATS Harvester', 'Audit Ledger'].map((tag) => (
-                  <span key={tag} className="px-3 py-1 rounded-lg bg-zinc-800 text-zinc-300 text-xs font-mono border border-zinc-700/60">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 pt-6 border-t border-zinc-800/80">
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-cyan-400" />
-                    The Problem
-                  </h4>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Before enterprise discovery calls, reps waste 45-60 minutes manually researching mail routing, script tags, and job boards. Generic AI tools hallucinate corporate horoscopes with ungrounded scores.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-                    <Network className="w-4 h-4 text-emerald-400" />
-                    How It Works
-                  </h4>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Harvests ground truth via parallel DNS-over-HTTPS (SPF/DMARC/MX), HTTP script signatures (Segment, Datadog, Next.js), and public ATS job APIs. Mints every fact into an immutable SHA-256 audit ledger and verifies that all persona hooks cite real artifacts.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-purple-400" />
-                    The Result
-                  </h4>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Generates verifiable pre-meeting sales battlecards in 10-15 seconds. Every discovery question and hook links to raw cryptographic proof, cutting pre-meeting research time by 80%.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 2: CorpGraph 3D */}
-            <div className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 transition">
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white">CorpGraph 3D</h3>
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-                      LIVE DEMO
-                    </span>
+                  {/* Actions */}
+                  <div className="flex items-center gap-2.5 shrink-0">
+                    {project.demoUrl && (
+                      <a
+                        href={project.demoUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 text-xs sm:text-sm font-medium transition"
+                      >
+                        Live Demo
+                        <ArrowUpRight className="w-4 h-4" />
+                      </a>
+                    )}
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="p-2 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-800 text-zinc-300 transition"
+                        title="GitHub Repository"
+                        aria-label="GitHub Repository"
+                      >
+                        <GithubIcon className="w-4 h-4" />
+                      </a>
+                    )}
+                    {project.isInternal && (
+                      <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-900 border border-zinc-800 text-zinc-400 text-xs font-mono">
+                        <Building2 className="w-3.5 h-3.5 text-amber-500" />
+                        Walmart DC Production
+                      </span>
+                    )}
                   </div>
-                  <p className="text-base sm:text-lg text-zinc-300 mt-2">
-                    Interactive 3D visualization of corporate ownership networks and parent-subsidiary relationships
-                  </p>
                 </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  <a
-                    href="https://corpgraph.anshdeepsingh.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-300 text-xs sm:text-sm font-medium transition"
-                  >
-                    Live Demo
-                    <ArrowUpRight className="w-4 h-4" />
-                  </a>
-                  <a
-                    href="https://github.com/Anshdeep-Singh/corpgraph-3d"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 transition"
-                    title="Source Repository"
-                  >
-                    <GithubIcon className="w-4 h-4" />
-                  </a>
-                </div>
-              </div>
 
-              {/* Badges */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {['Next.js', 'Three.js / WebGL', '3d-force-graph', 'Wikidata SPARQL API', 'jsPDF Vector Export', 'TypeScript'].map((tag) => (
-                  <span key={tag} className="px-3 py-1 rounded-lg bg-zinc-800 text-zinc-300 text-xs font-mono border border-zinc-700/60">
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 pt-6 border-t border-zinc-800/80">
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-cyan-400" />
-                    The Problem
-                  </h4>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Tracing corporate ownership across multiple tiers of subsidiaries and investment stakes usually requires expensive enterprise graph databases or slow server pipelines.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-                    <Network className="w-4 h-4 text-emerald-400" />
-                    How It Works
-                  </h4>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Directly queries live Wikidata SPARQL endpoints from the browser, builds the graph structure in memory, and renders the 3D network with Three.js—no backend servers or database hosting needed.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-purple-400" />
-                    The Result
-                  </h4>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Smooth 3D navigation across corporate connections with node search, relationship details, and clean one-click PDF export for research and due diligence reports.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Project 3: Enterprise Supply Chain Automation */}
-            <div className="p-6 sm:p-8 lg:p-10 rounded-2xl bg-zinc-900/40 border border-zinc-800 hover:border-zinc-700 transition">
-              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
-                <div>
-                  <div className="flex items-center gap-3">
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white">Enterprise Supply Chain & QA Automation</h3>
-                    <span className="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                      INTERNAL TOOLING
+                {/* Tech Stack Badges */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-2.5 py-1 rounded bg-[#171a20] text-zinc-300 text-xs font-mono border border-white/[0.06]"
+                    >
+                      {tag}
                     </span>
+                  ))}
+                </div>
+
+                {/* 3-Column Spec Breakdown */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-6 border-t border-white/[0.06]">
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+                      <Sliders className="w-3.5 h-3.5 text-amber-500" />
+                      Core Challenge
+                    </h4>
+                    <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                      {project.problem}
+                    </p>
                   </div>
-                  <p className="text-base sm:text-lg text-zinc-300 mt-2">
-                    Walmart Distribution Centre (Surrey, BC) · Warehouse operations automation
-                  </p>
-                </div>
-                <div className="flex items-center gap-2 shrink-0">
-                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-zinc-800 text-zinc-300 text-xs sm:text-sm font-medium">
-                    <Building2 className="w-4 h-4 text-emerald-400" />
-                    Internal Enterprise Tooling
-                  </span>
-                </div>
-              </div>
 
-              {/* Badges */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {['Excel VBA Automation', 'WMS Data Pipeline', 'Data Reconciliation', 'Process Automation', 'Reporting'].map((tag) => (
-                  <span key={tag} className="px-3 py-1 rounded-lg bg-zinc-800 text-zinc-300 text-xs font-mono border border-zinc-700/60">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+                      <Network className="w-3.5 h-3.5 text-amber-500" />
+                      Engineering Architecture
+                    </h4>
+                    <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                      {project.howItWorks}
+                    </p>
+                  </div>
 
-              {/* Breakdown */}
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 pt-6 border-t border-zinc-800/80">
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-                    <Activity className="w-4 h-4 text-cyan-400" />
-                    The Problem
-                  </h4>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Verifying daily cross-departmental KPI summaries and auditing outbound shipment files took over 4 hours every shift, done manually across messy spreadsheets with high risk of human error.
-                  </p>
+                  <div className="space-y-2">
+                    <h4 className="text-xs font-mono font-semibold text-zinc-400 uppercase tracking-wider flex items-center gap-2">
+                      <Zap className="w-3.5 h-3.5 text-amber-500" />
+                      Demonstrated Impact
+                    </h4>
+                    <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
+                      {project.result}
+                    </p>
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-                    <Network className="w-4 h-4 text-emerald-400" />
-                    How It Works
-                  </h4>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Built modular VBA automation tools that ingest raw Warehouse Management System transaction records, reconcile discrepancies against shipment logs, and highlight issues automatically.
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-sm font-semibold text-zinc-200 uppercase tracking-wider flex items-center gap-2">
-                    <Zap className="w-4 h-4 text-purple-400" />
-                    The Result
-                  </h4>
-                  <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                    Cut daily KPI verification by 38% (from 4 hours to 2.5 hours), reduced outbound audit reconciliation from 20 minutes to 5 minutes, and saved hours of manual work every week.
-                  </p>
-                </div>
-              </div>
-            </div>
-
+              </article>
+            ))}
           </div>
         </section>
 
-        {/* Background & Experience */}
+        {/* Experience & Engineering Pedigree */}
         <section className="mb-24 lg:mb-32">
-          <div className="flex items-center justify-between mb-8 pb-4 border-b border-zinc-800">
+          <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/[0.08]">
             <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight flex items-center gap-3">
-                <Briefcase className="w-7 h-7 text-emerald-400" />
-                Background & Experience
+              <div className="inline-flex items-center gap-2 text-xs font-mono text-amber-500 uppercase tracking-wider mb-1">
+                <span>BACKGROUND & RECORD</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+                Engineering Pedigree & Research
               </h2>
-              <p className="text-sm sm:text-base text-zinc-400 mt-1.5">
-                Practical roots in machine learning research, aerospace hardware testing, and data analytics
-              </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             
             {/* SCAAI */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/80 space-y-4">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#121418] border border-white/[0.08] space-y-4">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-bold text-white text-lg sm:text-xl">AI Researcher</h3>
-                  <p className="text-sm sm:text-base text-zinc-400 mt-0.5">Symbiosis Centre for AI (SCAAI)</p>
+                  <h3 className="font-bold text-white text-lg sm:text-xl">AI Research Scientist</h3>
+                  <p className="text-sm text-zinc-400 mt-0.5">Symbiosis Centre for AI (SCAAI)</p>
                 </div>
-                <span className="text-xs sm:text-sm font-mono text-zinc-400">2020 – 2021</span>
+                <span className="text-xs font-mono text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
+                  2020 – 2021
+                </span>
               </div>
               <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                Researched generative models using Conditional Generative Adversarial Networks (CGANs). Built automated dataset preparation pipelines and multi-modal models for sequential image generation in PyTorch.
+                Researched deep generative architectures using Conditional Generative Adversarial Networks (CGANs). Designed automated PyTorch dataset extraction pipelines and loss evaluators for multi-stage sequential image generation.
               </p>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {['CGANs', 'PyTorch', 'Data Pipelines', 'Computer Vision'].map((t) => (
-                  <span key={t} className="px-2.5 py-1 rounded bg-zinc-800/80 text-xs font-mono text-zinc-400">
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {['CGANs', 'PyTorch', 'Data Pipelines', 'Deep Learning Research'].map((t) => (
+                  <span key={t} className="px-2 py-0.5 rounded bg-zinc-900 text-xs font-mono text-zinc-400 border border-zinc-800">
                     {t}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Semi-Conductor Laboratory */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/80 space-y-4">
+            {/* SCL / ISRO */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#121418] border border-white/[0.08] space-y-4">
               <div className="flex items-start justify-between">
                 <div>
                   <h3 className="font-bold text-white text-lg sm:text-xl">Reliability Engineer</h3>
-                  <p className="text-sm sm:text-base text-zinc-400 mt-0.5">Semi-Conductor Laboratory (Govt Dept of Space / ISRO)</p>
+                  <p className="text-sm text-zinc-400 mt-0.5">Semi-Conductor Laboratory (Govt Dept of Space / ISRO)</p>
                 </div>
-                <span className="text-xs sm:text-sm font-mono text-zinc-400">2020 – 2021</span>
+                <span className="text-xs font-mono text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
+                  2020 – 2021
+                </span>
               </div>
               <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                Tested integrated circuits under extreme electrical and environmental conditions for aerospace applications. Wrote Python tools to analyze telemetry data, determine voltage thresholds, and diagnose failure causes.
+                Subjected aerospace-grade integrated circuits to extreme electrical and environmental stress testing. Built Python telemetry diagnostic scripts to calculate degradation curves and pinpoint hardware failure mechanisms.
               </p>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {['Python', 'Hardware Stress Testing', 'Telemetry Data', 'Failure Analysis'].map((t) => (
-                  <span key={t} className="px-2.5 py-1 rounded bg-zinc-800/80 text-xs font-mono text-zinc-400">
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {['Aerospace ICs', 'Python Telemetry', 'Electrical Stress Testing', 'Failure Diagnostics'].map((t) => (
+                  <span key={t} className="px-2 py-0.5 rounded bg-zinc-900 text-xs font-mono text-zinc-400 border border-zinc-800">
                     {t}
                   </span>
                 ))}
@@ -461,47 +611,51 @@ export default function App() {
             </div>
 
             {/* Tekolutions */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/80 space-y-4">
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#121418] border border-white/[0.08] space-y-4">
               <div className="flex items-start justify-between">
                 <div>
                   <h3 className="font-bold text-white text-lg sm:text-xl">Machine Learning Engineer</h3>
-                  <p className="text-sm sm:text-base text-zinc-400 mt-0.5">Tekolutions</p>
+                  <p className="text-sm text-zinc-400 mt-0.5">Tekolutions</p>
                 </div>
-                <span className="text-xs sm:text-sm font-mono text-zinc-400">2021</span>
+                <span className="text-xs font-mono text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
+                  2021
+                </span>
               </div>
               <p className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                Built multimodal evaluation pipelines combining CNN computer vision for facial expression tracking with Librosa audio feature extraction for speech and sentiment evaluation.
+                Constructed multimodal inference systems synthesizing CNN-based facial landmark detection with Librosa audio feature extraction (MFCCs, spectral roll-off) for real-time speech and sentiment classification.
               </p>
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {['CNNs', 'Audio Extraction', 'TensorFlow', 'Emotion Analysis'].map((t) => (
-                  <span key={t} className="px-2.5 py-1 rounded bg-zinc-800/80 text-xs font-mono text-zinc-400">
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                {['Computer Vision (CNN)', 'Librosa Audio', 'TensorFlow', 'Multimodal Pipelines'].map((t) => (
+                  <span key={t} className="px-2 py-0.5 rounded bg-zinc-900 text-xs font-mono text-zinc-400 border border-zinc-800">
                     {t}
                   </span>
                 ))}
               </div>
             </div>
 
-            {/* Education */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-zinc-900/50 border border-zinc-800/80 space-y-4">
+            {/* Education & Credentials */}
+            <div className="p-6 sm:p-8 rounded-2xl bg-[#121418] border border-white/[0.08] space-y-4">
               <div className="flex items-start justify-between">
                 <div>
                   <h3 className="font-bold text-white text-lg sm:text-xl">Education & Credentials</h3>
-                  <p className="text-sm sm:text-base text-zinc-400 mt-0.5">Degrees & Certifications</p>
+                  <p className="text-sm text-zinc-400 mt-0.5">Formal Technical Qualifications</p>
                 </div>
-                <span className="text-xs sm:text-sm font-mono text-zinc-400">Vancouver & India</span>
+                <span className="text-xs font-mono text-zinc-500 bg-zinc-900 px-2 py-1 rounded border border-zinc-800">
+                  Vancouver & India
+                </span>
               </div>
-              <ul className="text-sm sm:text-base text-zinc-300 space-y-3 leading-relaxed">
+              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5 leading-relaxed">
                 <li>
-                  <strong className="text-zinc-100 font-semibold">Post-Baccalaureate Diploma in Data Analytics:</strong> Douglas College (Vancouver, BC)
+                  <strong className="text-white font-medium">Post-Baccalaureate Diploma in Data Analytics:</strong> Douglas College (Vancouver, BC)
                 </li>
                 <li>
-                  <strong className="text-zinc-100 font-semibold">B.Tech in Electronics & Telecommunication:</strong> Symbiosis Institute of Technology
+                  <strong className="text-white font-medium">B.Tech in Electronics & Telecommunication:</strong> Symbiosis Institute of Technology
                 </li>
                 <li>
-                  <strong className="text-zinc-100 font-semibold">Diploma in Business Management:</strong> SIBM Pune
+                  <strong className="text-white font-medium">Diploma in Business Management:</strong> SIBM Pune
                 </li>
                 <li>
-                  <strong className="text-zinc-100 font-semibold">Junior Data Analyst Professional Certificate:</strong> NPower Canada
+                  <strong className="text-white font-medium">Junior Data Analyst Professional Certificate:</strong> NPower Canada
                 </li>
               </ul>
             </div>
@@ -509,122 +663,126 @@ export default function App() {
           </div>
         </section>
 
-        {/* Skills & Technologies */}
+        {/* Technical Capabilities Matrix */}
         <section className="mb-24 lg:mb-32">
-          <div className="flex items-center justify-between mb-8 pb-4 border-b border-zinc-800">
+          <div className="flex items-center justify-between mb-8 pb-4 border-b border-white/[0.08]">
             <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight flex items-center gap-3">
-                <Terminal className="w-7 h-7 text-emerald-400" />
-                Skills & Technologies
+              <div className="inline-flex items-center gap-2 text-xs font-mono text-amber-500 uppercase tracking-wider mb-1">
+                <span>SKILLS INDEX</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+                Technical Capabilities
               </h2>
-              <p className="text-sm sm:text-base text-zinc-400 mt-1.5">
-                Tools and frameworks I use to build reliable software and automated workflows
-              </p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
             
-            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80">
-              <div className="text-emerald-400 font-semibold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+            <div className="p-6 rounded-xl bg-[#121418] border border-white/[0.06]">
+              <div className="font-mono text-xs text-amber-500 uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Cpu className="w-4 h-4" />
-                Agentic & AI
+                [01] Agentic & AI
               </div>
-              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5 font-normal">
-                <li>• Multi-agent workflows</li>
-                <li>• Pydantic & Zod schemas</li>
-                <li>• Prompt design & evals</li>
-                <li>• Cost & token budgeting</li>
-                <li>• Automated validation</li>
-                <li>• Background watchdogs</li>
+              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5">
+                <li>• Deterministic AI workflows</li>
+                <li>• Strict Pydantic / Zod contracts</li>
+                <li>• Multi-agent routing & guardrails</li>
+                <li>• Grounding & hallucination prevention</li>
+                <li>• Cost & token allocation models</li>
+                <li>• Autonomous scheduled watchdogs</li>
               </ul>
             </div>
 
-            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80">
-              <div className="text-cyan-400 font-semibold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+            <div className="p-6 rounded-xl bg-[#121418] border border-white/[0.06]">
+              <div className="font-mono text-xs text-amber-500 uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Database className="w-4 h-4" />
-                Backend & APIs
+                [02] Backend & Data
               </div>
-              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5 font-normal">
+              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5">
                 <li>• Python (FastAPI, Flask)</li>
                 <li>• TypeScript / Node.js</li>
-                <li>• REST APIs & WebSockets</li>
+                <li>• REST & WebSockets</li>
                 <li>• PostgreSQL & SQLite</li>
                 <li>• Docker & Linux Bash</li>
-                <li>• SPARQL & GraphQL</li>
+                <li>• SPARQL & Wikidata APIs</li>
               </ul>
             </div>
 
-            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80">
-              <div className="text-purple-400 font-semibold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+            <div className="p-6 rounded-xl bg-[#121418] border border-white/[0.06]">
+              <div className="font-mono text-xs text-amber-500 uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Layers className="w-4 h-4" />
-                Frontend & Viz
+                [03] Frontend & 3D
               </div>
-              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5 font-normal">
-                <li>• React & Next.js</li>
-                <li>• TypeScript</li>
-                <li>• Tailwind CSS</li>
-                <li>• Three.js / WebGL</li>
-                <li>• Canvas & SVG graphs</li>
-                <li>• Responsive UI/UX</li>
+              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5">
+                <li>• React 19 & Next.js 16</li>
+                <li>• Three.js & WebGL rendering</li>
+                <li>• 3D force-directed graphs</li>
+                <li>• Tailwind CSS v4 styling</li>
+                <li>• Client-side vector PDF generation</li>
+                <li>• High-performance interactive UI</li>
               </ul>
             </div>
 
-            <div className="p-6 rounded-2xl bg-zinc-900/40 border border-zinc-800/80">
-              <div className="text-amber-400 font-semibold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
-                <Building2 className="w-4 h-4" />
-                Operations & Tooling
+            <div className="p-6 rounded-xl bg-[#121418] border border-white/[0.06]">
+              <div className="font-mono text-xs text-amber-500 uppercase tracking-wider mb-4 flex items-center gap-2">
+                <Workflow className="w-4 h-4" />
+                [04] Operations & Tooling
               </div>
-              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5 font-normal">
-                <li>• Excel VBA Automation</li>
-                <li>• Warehouse logistics (WMS)</li>
-                <li>• Data reconciliation</li>
-                <li>• n8n workflows</li>
-                <li>• Root-cause analysis</li>
-                <li>• Process documentation</li>
+              <ul className="text-sm sm:text-base text-zinc-300 space-y-2.5">
+                <li>• Excel VBA enterprise automation</li>
+                <li>• Warehouse (WMS) data reconciliation</li>
+                <li>• n8n automated orchestrations</li>
+                <li>• Telemetry failure diagnosis</li>
+                <li>• Process bottleneck elimination</li>
+                <li>• Technical documentation & SOPs</li>
               </ul>
             </div>
 
           </div>
         </section>
 
-        {/* Contact / Call To Action */}
-        <section id="contact" className="p-8 sm:p-14 lg:p-16 rounded-3xl bg-gradient-to-b from-zinc-900/90 to-zinc-950 border border-zinc-800 text-center relative overflow-hidden">
-          <div className="max-w-2xl mx-auto space-y-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
-              Let's connect.
+        {/* Contact & Availability CTA */}
+        <section id="contact" className="p-8 sm:p-12 lg:p-16 rounded-2xl bg-[#121418] border border-white/[0.08] text-center relative">
+          <div className="max-w-2xl mx-auto space-y-5">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-zinc-900 border border-zinc-800 text-amber-400 text-xs font-mono">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-500" />
+              OPEN FOR FULL-TIME ROLES · VANCOUVER & REMOTE
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
+              Let's build reliable systems.
             </h2>
             <p className="text-zinc-300 text-base sm:text-lg leading-relaxed">
-              I'm open to full-time roles in AI automation, solutions engineering, and backend systems. Based in Greater Vancouver, open to local, hybrid, or remote roles across Canada.
+              I'm actively seeking opportunities as an AI Automation Engineer, Systems Engineer, or Solutions Engineer in Greater Vancouver or remote across Canada.
             </p>
 
-            <div className="pt-6 flex flex-wrap items-center justify-center gap-3.5">
+            <div className="pt-4 flex flex-wrap items-center justify-center gap-3.5">
               <a
                 href="mailto:anshdeepsaini@gmail.com"
-                className="px-6 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm sm:text-base transition inline-flex items-center gap-2.5 shadow-lg shadow-emerald-500/20"
+                className="px-6 py-3.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-zinc-950 font-bold text-sm sm:text-base transition inline-flex items-center gap-2 shadow-[0_1px_2px_rgba(0,0,0,0.5)]"
               >
                 <Mail className="w-4 h-4" />
-                Send an Email
+                Send Email Directly
               </a>
               <button
                 onClick={copyEmail}
-                className="px-5 py-3.5 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-300 text-sm sm:text-base font-medium transition inline-flex items-center gap-2.5"
+                className="px-5 py-3.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-200 text-sm sm:text-base font-medium transition inline-flex items-center gap-2"
               >
-                {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
-                {copiedEmail ? 'Email Copied' : 'Copy Address'}
+                {copiedEmail ? <Check className="w-4 h-4 text-amber-400" /> : <Copy className="w-4 h-4 text-zinc-400" />}
+                {copiedEmail ? 'Email Copied' : 'Copy anshdeepsaini@gmail.com'}
               </button>
             </div>
 
-            <div className="pt-8 flex flex-wrap items-center justify-center gap-8 text-sm sm:text-base text-zinc-300">
+            <div className="pt-8 flex flex-wrap items-center justify-center gap-8 text-sm text-zinc-400 border-t border-white/[0.06] mt-8">
               <span className="inline-flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-emerald-400" />
+                <MapPin className="w-4 h-4 text-amber-500" />
                 Vancouver, BC
               </span>
               <a
                 href="mailto:anshdeepsaini@gmail.com"
                 className="inline-flex items-center gap-2 hover:text-white transition"
               >
-                <Mail className="w-4 h-4 text-emerald-400" />
+                <Mail className="w-4 h-4 text-amber-500" />
                 anshdeepsaini@gmail.com
               </a>
               <a
@@ -633,16 +791,16 @@ export default function App() {
                 rel="noreferrer"
                 className="inline-flex items-center gap-2 hover:text-white transition"
               >
-                <LinkedinIcon className="w-4 h-4 text-emerald-400" />
+                <LinkedinIcon className="w-4 h-4 text-amber-500" />
                 linkedin.com/in/anshdeeps
               </a>
             </div>
           </div>
         </section>
 
-        {/* Footer */}
-        <footer className="mt-14 pb-4 text-center text-sm text-zinc-500 font-normal">
-          <p>© {new Date().getFullYear()} Anshdeep Singh. All rights reserved.</p>
+        {/* Minimalist Engineering Footer */}
+        <footer className="mt-12 pb-6 text-center text-xs font-mono text-zinc-500">
+          <p>© {new Date().getFullYear()} Anshdeep Singh // Engineered with React 19, TypeScript & Tailwind CSS v4</p>
         </footer>
 
       </div>
